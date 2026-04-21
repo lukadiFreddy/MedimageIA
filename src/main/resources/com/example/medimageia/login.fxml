@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane accessibleRole="BUTTON" prefHeight="500.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="84.0" layoutY="42.0" text="CONNEXION">
+                     <font>
+                        <Font name="Calibri Bold" size="35.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="47.0" layoutY="128.0" prefHeight="35.0" prefWidth="255.0" promptText="Nom d'utilisateur">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField layoutX="47.0" layoutY="196.0" prefHeight="35.0" prefWidth="255.0" promptText="Mot de passe">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </PasswordField>
+                  <CheckBox layoutX="47.0" layoutY="266.0" mnemonicParsing="false" text="Voir le mot de passe">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <Button id="login-button" layoutX="108.0" layoutY="349.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="133.0" styleClass="login-button" stylesheets="@style.css" text="Se connecter">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="57.0" layoutY="437.0" text="Vous n'avez pas de compte ?" />
+                  <Hyperlink layoutX="210.0" layoutY="434.0" text="Inscrivez-vous">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Hyperlink>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </children>
+</StackPane>

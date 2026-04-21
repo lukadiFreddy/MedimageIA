@@ -1,0 +1,57 @@
+.root {
+    -fx-background-color: #e6e6e6;
+}
+
+/* Champs de saisie */
+.text-field, .password-field {
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+}
+
+/* Checkbox */
+.check-box {
+    -fx-color: black;
+}
+
+/* Bouton */
+.login-button {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-weight: bold;
+}
+
+/* Hover bouton */
+.login-button:hover {
+    -fx-background-color: #246324;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Hyperlink */
+.hyperlink {
+    -fx-text-fill: #246324;
+    -fx-underline: false;
+    -fx-background-color: #e6e6e6;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Hover Hyperlink */
+.hyperlink:hover {
+    -fx-text-fill: #246324;
+    -fx-underline: false;
+    -fx-background-color: #e6e6e6;
+}
+
+.button:focused,
+.check-box:focused,
+.hyperlink:focused {
+    -fx-focus-color: #e6e6e6;
+    -fx-faint-focus-color: rgba(0, 0, 0, 0.00);
+}
