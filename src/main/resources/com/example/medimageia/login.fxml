@@ -5,23 +5,23 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.medimageia.HelloController" focusTraversable="true">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane fx:id="login_form" accessibleRole="BUTTON" prefHeight="500.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane fx:id="login_form" accessibleRole="BUTTON" prefHeight="500.0" prefWidth="350.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Label layoutX="84.0" layoutY="42.0" text="CONNEXION">
                      <font>
                         <Font name="Calibri Bold" size="35.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="login_username" layoutX="47.0" layoutY="128.0" prefHeight="35.0" prefWidth="255.0" promptText="Nom d'utilisateur">
+                  <TextField fx:id="login_username" layoutX="47.0" layoutY="128.0" prefHeight="35.0" prefWidth="255.0" promptText="Nom d'utilisateur" focusTraversable="false">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="login_password" layoutX="47.0" layoutY="196.0" prefHeight="35.0" prefWidth="255.0" promptText="Mot de passe">
+                  <PasswordField fx:id="login_password" layoutX="47.0" layoutY="196.0" prefHeight="35.0" prefWidth="255.0" promptText="Mot de passe" focusTraversable="false">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -37,31 +37,31 @@
                      </font>
                   </Button>
                   <Label layoutX="57.0" layoutY="437.0" text="Vous n'avez pas de compte ?" />
-                  <Hyperlink fx:id="login_back" layoutX="210.0" layoutY="434.0" text="Inscrivez-vous">
+                  <Hyperlink fx:id="login_back" layoutX="210.0" layoutY="434.0" onAction="#switchForm" text="Inscrivez-vous">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </Hyperlink>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="register_form" accessibleRole="BUTTON" layoutX="3.0" layoutY="3.0" prefHeight="500.0" prefWidth="350.0" visible="false">
+            <AnchorPane fx:id="register_form" accessibleRole="BUTTON" layoutX="3.0" layoutY="3.0" prefHeight="500.0" prefWidth="350.0">
                <children>
                   <Label layoutX="35.0" layoutY="40.0" text="CREER UN COMPTE">
                      <font>
                         <Font name="Calibri Bold" size="35.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="register_email" layoutX="47.0" layoutY="128.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer votre adresse mail">
+                  <TextField fx:id="register_email" layoutX="47.0" layoutY="128.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer votre adresse mail" focusTraversable="false">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <PasswordField fx:id="register_password" layoutX="47.0" layoutY="241.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer votre Mot de passe">
+                  <PasswordField fx:id="register_password" layoutX="47.0" layoutY="241.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer votre Mot de passe" focusTraversable="false">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
-                  <CheckBox fx:id="register_checkbox" layoutX="47.0" layoutY="296.0" mnemonicParsing="false" text="Voir le mot de passe">
+                  <CheckBox fx:id="register_checkbox" layoutX="47.0" layoutY="296.0" mnemonicParsing="false" text="Voir le mot de passe" focusTraversable="false">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -72,7 +72,7 @@
                      </font>
                   </Button>
                   <Label layoutX="57.0" layoutY="437.0" text="Vous avez deja un compte !" />
-                  <Hyperlink fx:id="register_back" layoutX="203.0" layoutY="434.0" text="Se connecter">
+                  <Hyperlink fx:id="register_back" layoutX="203.0" layoutY="434.0" onAction="#switchForm" text="Se connecter">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
