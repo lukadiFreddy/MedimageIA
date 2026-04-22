@@ -22,6 +22,7 @@ public class Alertmessage {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     // Cette partie gere les message de success
     public void successMessage(String message){
         alert = new Alert(Alert.AlertType.INFORMATION);
