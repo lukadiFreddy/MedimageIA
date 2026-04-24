@@ -1,6 +1,5 @@
 package com.example.medimageia;
 
-import javax.xml.crypto.MarshalException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 

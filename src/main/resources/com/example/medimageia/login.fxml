@@ -22,7 +22,6 @@
                      </font>
                   </TextField>
                   <PasswordField fx:id="login_password" focusTraversable="false" layoutX="47.0" layoutY="196.0" prefHeight="35.0" prefWidth="255.0" promptText="Mot de passe">
-                     <TextField fx:id="login_password_visible" layoutX="47.0" layoutY="196.0" prefHeight="35.0" prefWidth="255.0" visible="false" managed="false" promptText="Mot de passe"/>
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -58,7 +57,6 @@
                      </font>
                   </TextField>
                   <PasswordField fx:id="register_password" focusTraversable="false" layoutX="47.0" layoutY="241.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer votre Mot de passe">
-                     <TextField fx:id="register_password_visible" layoutX="47.0" layoutY="241.0" prefHeight="35.0" prefWidth="255.0" visible="false" managed="false" promptText="Mot de passe"/>
                      <font>
                         <Font size="14.0" />
                      </font>
