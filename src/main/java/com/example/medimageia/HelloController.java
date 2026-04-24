@@ -36,6 +36,8 @@ public class HelloController {
     @FXML
     private PasswordField register_password;
     @FXML
+    private TextField register_showPassword;
+    @FXML
     private CheckBox register_checkbox;
     @FXML
     private Button register_btn;
@@ -78,12 +80,6 @@ public class HelloController {
         String email = register_email.getText();
         String username = register_username.getText();
         String password = register_password.getText();
-
-
-        //if (connect == null) {
-        //    alert.errorMessage("La creation du compte a échouée");
-        //    return;
-        //}
 
         String checkUsername = "SELECT * FROM docteur WHERE user_name = ?";
         String checkEmail = "SELECT * FROM docteur WHERE user_email = ?";
@@ -128,16 +124,17 @@ public class HelloController {
 
                 prepare.executeUpdate();
 
-                alert.successMessage("Enregistrement réussi");
+                alert.successMessage("L'inscription a réussi");
+                clearRegisterFields();
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            alert.errorMessage("L'enregistrement a échouée, verifiez vos informations");
+            alert.errorMessage("L'inscription a échouée, verifiez vos informations");
         }
     }
 
-
+    // Cette partie sert pour passer de Interface LOGIN a SIGN et vise versa
     public void switchForm(ActionEvent event) {
 
         if (event.getSource() == login_back) {
@@ -146,6 +143,19 @@ public class HelloController {
         } else if (event.getSource() == register_back) {
             login_form.setVisible(true);
             register_form.setVisible(false);
+        }
+    }
+
+    // Cette partie c'est pour le button CheckBox qui affiche le mot de passe
+    public void registerShowPassword(){
+        if(register_checkbox.isSelected()){
+            register_showPassword.setText(register_password.getText());
+            register_showPassword.setVisible(true);
+            register_password.setVisible(false);
+        }else {
+            register_password.setText(register_showPassword.getText());
+            register_showPassword.setVisible(false);
+            register_password.setVisible(true);
         }
     }
 

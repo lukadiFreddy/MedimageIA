@@ -56,12 +56,22 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
+                  <TextField fx:id="register_username" layoutX="47.0" layoutY="185.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer Nom d'utilisateur">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="register_showPassword" layoutX="47.0" layoutY="241.0" prefHeight="35.0" prefWidth="255.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
                   <PasswordField fx:id="register_password" focusTraversable="false" layoutX="47.0" layoutY="241.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer votre Mot de passe">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
-                  <CheckBox fx:id="register_checkbox" focusTraversable="false" layoutX="47.0" layoutY="296.0" mnemonicParsing="false" text="Voir le mot de passe">
+                  <CheckBox fx:id="register_checkbox" focusTraversable="false" layoutX="47.0" layoutY="296.0" mnemonicParsing="false" onAction="#registerShowPassword" text="Voir le mot de passe">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -77,11 +87,6 @@
                         <Insets />
                      </opaqueInsets>
                   </Hyperlink>
-                  <TextField fx:id="register_username" layoutX="47.0" layoutY="185.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer Nom d'utilisateur">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </TextField>
                </children>
             </AnchorPane>
          </children></AnchorPane>
