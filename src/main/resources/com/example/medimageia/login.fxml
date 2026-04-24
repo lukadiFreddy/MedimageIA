@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.medimageia.HelloController">
+<StackPane fx:id="star_form" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.medimageia.HelloController">
    <children>
       <AnchorPane fx:id="main_form" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -17,6 +17,11 @@
                      </font>
                   </Label>
                   <TextField fx:id="login_username" focusTraversable="false" layoutX="47.0" layoutY="128.0" prefHeight="35.0" prefWidth="255.0" promptText="Nom d'utilisateur">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="login_showPassword" focusTraversable="false" layoutX="47.0" layoutY="196.0" prefHeight="35.0" prefWidth="255.0" promptText="Nom d'utilisateur">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -56,7 +61,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="register_username" layoutX="47.0" layoutY="185.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer Nom d'utilisateur">
+                  <TextField fx:id="register_username" focusTraversable="false" layoutX="47.0" layoutY="185.0" prefHeight="35.0" prefWidth="255.0" promptText="Inserer Nom d'utilisateur">
                      <font>
                         <Font size="14.0" />
                      </font>

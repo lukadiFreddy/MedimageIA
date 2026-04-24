@@ -56,24 +56,48 @@ public class HelloController {
         login_checkbox.setSelected(false);
     }
 
-    // Apres le clic duu Button Inscription
-    private void clearRegisterFields() {
-        register_email.clear();
-        register_username.clear();
-        register_password.clear();
-        register_checkbox.setSelected(false);
-    }
+
 
     // Vérifie que cette classe existe bien
     private Alertmessage alert = new Alertmessage();
 
+    // Cette partie sert pour la connexion au systeme
+    private void loginAcount(){
+        if(login_username.getText().isEmpty() || login_password.getText().isEmpty()){
+            alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
+        }else{
+            String sql = "SELECT * FROM docteur WHERE username=? AND password=?";
+
+            connect = DataBase.connectDB();
+
+            try{
+
+                prepare = connect.prepareStatement(sql);
+                prepare.setString(1,login_username.getText());
+                prepare.setString(2,login_password.getText());
+                result = prepare.executeQuery();
+
+                if(result.next()){
+                    
+                }else{
+                    alert.errorMessage("Vous informations sont incorrectes");
+                }
+
+            } catch (Exception e){
+                e.printStackTrace();
+                alert.errorMessage("La connexion a échouée, verifiez vos informations");
+            }
+        }
+    }
+
+    // Cette partie sert pour la creation du compte
     public void registerAcount() {
 
         if (register_email.getText().isEmpty()
                 || register_username.getText().isEmpty()
                 || register_password.getText().isEmpty()) {
 
-            alert.errorMessage("Veuillez remplir tous les champs");
+            alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
             return;
         }
 
@@ -126,6 +150,11 @@ public class HelloController {
 
                 alert.successMessage("L'inscription a réussi");
                 clearRegisterFields();
+
+                //Fermerture des iNterfase apres la connexion
+                login_form.setVisible(true);
+                register_form.setVisible(false);
+
             }
 
         } catch (Exception e) {
@@ -159,4 +188,11 @@ public class HelloController {
         }
     }
 
+    // Apres le clic duu Button Inscription
+    private void clearRegisterFields() {
+        register_email.clear();
+        register_username.clear();
+        register_password.clear();
+        register_checkbox.setSelected(false);
+    }
 }
