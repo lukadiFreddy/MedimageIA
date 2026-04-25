@@ -25,6 +25,8 @@ public class HelloController {
     @FXML
     private Button login_btn;
     @FXML
+    private TextField login_showPassword;
+    @FXML
     private Hyperlink login_back;
 
     @FXML
@@ -62,15 +64,17 @@ public class HelloController {
     private Alertmessage alert = new Alertmessage();
 
     // Cette partie sert pour la connexion au systeme
-    private void loginAcount(){
+    public void loginAcount(){
         if(login_username.getText().isEmpty() || login_password.getText().isEmpty()){
             alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
         }else{
-            String sql = "SELECT * FROM docteur WHERE username=? AND password=?";
+
+            String sql = "SELECT * FROM docteur WHERE user_name=? AND user_password=?";
 
             connect = DataBase.connectDB();
 
             try{
+
 
                 prepare = connect.prepareStatement(sql);
                 prepare.setString(1,login_username.getText());
@@ -78,7 +82,7 @@ public class HelloController {
                 result = prepare.executeQuery();
 
                 if(result.next()){
-                    
+                    alert.successMessage("La connexion a réussie");
                 }else{
                     alert.errorMessage("Vous informations sont incorrectes");
                 }
@@ -89,6 +93,22 @@ public class HelloController {
             }
         }
     }
+
+    // Cette partie c'est pour le button CheckBox qui affiche le mot de passe
+    public void loginShowPassword(){
+        if(login_checkbox.isSelected()){
+            login_showPassword.setText(login_password.getText());
+            login_showPassword.setVisible(true);
+            login_password.setVisible(false);
+        }else {
+            login_password.setText(login_showPassword.getText());
+            login_showPassword.setVisible(false);
+            login_password.setVisible(true);
+        }
+    }
+
+
+
 
     // Cette partie sert pour la creation du compte
     public void registerAcount() {
