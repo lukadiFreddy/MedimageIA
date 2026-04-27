@@ -15,11 +15,10 @@ import java.sql.ResultSet;
 import java.sql.Date;
 
 public class HelloController {
-    // La Scene principale
+
     @FXML
     private AnchorPane main_form;
 
-    // Les Scenes du LOGIN
     @FXML
     private AnchorPane login_form;
     @FXML
@@ -27,15 +26,14 @@ public class HelloController {
     @FXML
     private PasswordField login_password;
     @FXML
+    private TextField login_showPassword;
+    @FXML
     private CheckBox login_checkbox;
     @FXML
     private Button login_btn;
     @FXML
-    private TextField login_showPassword;
-    @FXML
     private Hyperlink login_back;
 
-    //Les Scenes SIGN
     @FXML
     private AnchorPane register_form;
     @FXML
@@ -53,88 +51,86 @@ public class HelloController {
     @FXML
     private Hyperlink register_back;
 
-    // Elements pour la Base de donnees
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
 
-    // Apres le clic du Button Connexion
-    private void clearLoginFields() {
-        login_username.clear();
-        login_password.clear();
-        login_checkbox.setSelected(false);
-    }
-
-    // Vérifie que cette classe existe bien
     private Alertmessage alert = new Alertmessage();
 
-    // Cette partie sert pour la connexion au systeme
+    // ================= LOGIN =================
     public void loginAcount(){
-        if(login_username.getText().isEmpty() || login_password.getText().isEmpty()){
+
+        if(login_username.getText().isEmpty() || getLoginPassword().isEmpty()){
             alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
-        }else{
+            return;
+        }
 
-            String sql = "SELECT * FROM docteur WHERE user_name=? AND user_password=?";
+        String sql = "SELECT * FROM docteur WHERE user_name=? AND user_password=?";
 
-            connect = DataBase.connectDB();
+        connect = DataBase.connectDB();
 
-            try{
+        if(connect == null){
+            alert.errorMessage("Connexion à la base échouée");
+            return;
+        }
 
-                if(!login_showPassword.isVisible()){
-                    if(!login_showPassword.getText().equals(login_password.getText())){
-                        login_showPassword.setText(login_password.getText());
-                    }
-                }else{
-                    if(!login_showPassword.getText().equals(login_password.getText())){
-                        login_password.setText(login_showPassword.getText());
-                    }
-                }
+        try{
+            prepare = connect.prepareStatement(sql);
+            prepare.setString(1, login_username.getText());
+            prepare.setString(2, getLoginPassword());
 
-                prepare = connect.prepareStatement(sql);
-                prepare.setString(1,login_username.getText());
-                prepare.setString(2,login_password.getText());
-                result = prepare.executeQuery();
+            result = prepare.executeQuery();
 
-                if(result.next()){
-                    alert.successMessage("La connexion a réussie");
-                    clearLoginFields();
-                    //Fermerture des interface apres la connexion et lancement de la page main
-                    main_form.getScene().getWindow().hide();
+            if(result.next()){
+                alert.successMessage("La connexion a réussie");
 
-                    Parent root= FXMLLoader.load(getClass().getResource("main.fxml"));
-                    Stage stage = (Stage) login_btn.getScene().getWindow();
-                    stage.setScene(new Scene(root));
-                    stage.show();
-                }else{
-                    alert.errorMessage("Vous informations sont incorrectes");
-                }
+                Parent root = FXMLLoader.load(
+                        getClass().getResource("/com/example/medimageia/main.fxml")
+                );
 
-            } catch (Exception e){
-                e.printStackTrace();
-                alert.errorMessage("La connexion a échouée, verifiez vos informations");
+                Stage stage = (Stage) login_btn.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setResizable(true);
+                stage.show();
+
+            }else{
+                alert.errorMessage("Vos informations sont incorrectes");
             }
+
+        } catch (Exception e){
+            e.printStackTrace();
+            alert.errorMessage("La connexion a échouée");
         }
     }
 
-    // Cette partie c'est pour le button CheckBox qui affiche le mot de passe
+    // récupère toujours le bon password
+    private String getLoginPassword(){
+        if(login_checkbox.isSelected()){
+            return login_showPassword.getText();
+        }else{
+            return login_password.getText();
+        }
+    }
+
+    // affichage password LOGIN
     public void loginShowPassword(){
         if(login_checkbox.isSelected()){
             login_showPassword.setText(login_password.getText());
             login_showPassword.setVisible(true);
             login_password.setVisible(false);
-        }else {
+        }else{
             login_password.setText(login_showPassword.getText());
-            login_showPassword.setVisible(false);
             login_password.setVisible(true);
+            login_showPassword.setVisible(false);
         }
     }
 
-    // Cette partie sert pour la creation du compte
+    // ================= REGISTER =================
     public void registerAcount() {
 
         if (register_email.getText().isEmpty()
                 || register_username.getText().isEmpty()
-                || register_password.getText().isEmpty()) {
+                || getRegisterPassword().isEmpty()) {
 
             alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
             return;
@@ -142,13 +138,14 @@ public class HelloController {
 
         String email = register_email.getText();
         String username = register_username.getText();
-        String password = register_password.getText();
+        String password = getRegisterPassword();
 
         String checkUsername = "SELECT * FROM docteur WHERE user_name = ?";
         String checkEmail = "SELECT * FROM docteur WHERE user_email = ?";
 
         try {
             connect = DataBase.connectDB();
+
             if (connect == null) {
                 alert.errorMessage("Connexion à la base échouée");
                 return;
@@ -159,55 +156,75 @@ public class HelloController {
             result = prepare.executeQuery();
 
             if (result.next()) {
-                alert.errorMessage("Le nom existe déjà  " );
+                alert.errorMessage("Le nom existe déjà");
                 return;
             }
 
             prepare = connect.prepareStatement(checkEmail);
             prepare.setString(1, email);
             result = prepare.executeQuery();
+
             if (result.next()) {
-                alert.errorMessage("L email existe déjà  " );
+                alert.errorMessage("L'email existe déjà");
                 return;
             }
 
-            if (register_password.getText().length() < 6) {
-                alert.errorMessage("Le mot de passe est trop court. Il doit contenir au moins 6 caractères.");
-            } else {
-                // Apres les verification il insert les infos dans la base de donnees
-                String insertData = "INSERT INTO docteur (user_email, user_name, user_password, created_at) VALUES (?, ?, ?, ?)";
-
-                Date sqlDate = new Date(System.currentTimeMillis());
-
-                prepare = connect.prepareStatement(insertData);
-                prepare.setString(1, email);
-                prepare.setString(2, username);
-                prepare.setString(3, password);
-                prepare.setDate(4, sqlDate);
-
-                prepare.executeUpdate();
-
-                alert.successMessage("L'inscription a réussi");
-                clearRegisterFields();
-
-                //Fermerture des iNterfase apres la connexion et lancement de la page main
-                main_form.getScene().getWindow().hide();
-
-                Parent root= FXMLLoader.load(getClass().getResource("main.fxml"));
-                Stage stage = (Stage) login_btn.getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.show();
+            if (password.length() < 6) {
+                alert.errorMessage("Le mot de passe doit contenir au moins 6 caractères");
+                return;
             }
+
+            String insertData = "INSERT INTO docteur (user_email, user_name, user_password, created_at) VALUES (?, ?, ?, ?)";
+
+            Date sqlDate = new Date(System.currentTimeMillis());
+
+            prepare = connect.prepareStatement(insertData);
+            prepare.setString(1, email);
+            prepare.setString(2, username);
+            prepare.setString(3, password);
+            prepare.setDate(4, sqlDate);
+
+            prepare.executeUpdate();
+
+            alert.successMessage("L'inscription a réussi");
+
+            Parent root = FXMLLoader.load(
+                    getClass().getResource("/com/example/medimageia/main.fxml")
+            );
+
+            Stage stage = (Stage) register_btn.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setResizable(true);
+            stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
-            alert.errorMessage("L'inscription a échouée, verifiez vos informations");
+            alert.errorMessage("L'inscription a échouée");
         }
     }
 
-    // Cette partie sert pour passer de Interface LOGIN a SIGN et vise versa
-    public void switchForm(ActionEvent event) {
+    private String getRegisterPassword(){
+        if(register_checkbox.isSelected()){
+            return register_showPassword.getText();
+        }else{
+            return register_password.getText();
+        }
+    }
 
+    public void registerShowPassword(){
+        if(register_checkbox.isSelected()){
+            register_showPassword.setText(register_password.getText());
+            register_showPassword.setVisible(true);
+            register_password.setVisible(false);
+        }else{
+            register_password.setText(register_showPassword.getText());
+            register_password.setVisible(true);
+            register_showPassword.setVisible(false);
+        }
+    }
+
+    // ================= SWITCH =================
+    public void switchForm(ActionEvent event) {
         if (event.getSource() == login_back) {
             login_form.setVisible(false);
             register_form.setVisible(true);
@@ -215,26 +232,5 @@ public class HelloController {
             login_form.setVisible(true);
             register_form.setVisible(false);
         }
-    }
-
-    // Cette partie c'est pour le button CheckBox qui affiche le mot de passe
-    public void registerShowPassword(){
-        if(register_checkbox.isSelected()){
-            register_showPassword.setText(register_password.getText());
-            register_showPassword.setVisible(true);
-            register_password.setVisible(false);
-        }else {
-            register_password.setText(register_showPassword.getText());
-            register_showPassword.setVisible(false);
-            register_password.setVisible(true);
-        }
-    }
-
-    // Apres le clic duu Button Inscription
-    private void clearRegisterFields() {
-        register_email.clear();
-        register_username.clear();
-        register_password.clear();
-        register_checkbox.setSelected(false);
     }
 }

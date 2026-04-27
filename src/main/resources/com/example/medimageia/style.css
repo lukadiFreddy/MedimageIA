@@ -55,3 +55,15 @@
     -fx-focus-color: #e6e6e6;
     -fx-faint-focus-color: rgba(0, 0, 0, 0.00);
 }
+
+/* C'est ici que sera place les styles du file main */
+.accueil{
+    -fx-background-color: white;
+}
+.header{
+    -fx-background-color: #cccbcb;
+}
+.navBar{
+    -fx-background-color: #cccbcb;
+}
+
