@@ -181,9 +181,7 @@ public class HelloController {
                 clearRegisterFields();
 
                 //Fermerture des iNterfase apres la connexion
-                login_form.setVisible(true);
-                register_form.setVisible(false);
-
+                main_form.getScene().getWindow().hide();
             }
 
         } catch (Exception e) {
