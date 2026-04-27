@@ -75,6 +75,15 @@ public class HelloController {
 
             try{
 
+                if(!login_showPassword.isVisible()){
+                    if(!login_showPassword.getText().equals(login_password.getText())){
+                        login_showPassword.setText(login_password.getText());
+                    }
+                }else{
+                    if(!login_showPassword.getText().equals(login_password.getText())){
+                        login_password.setText(login_showPassword.getText());
+                    }
+                }
 
                 prepare = connect.prepareStatement(sql);
                 prepare.setString(1,login_username.getText());
