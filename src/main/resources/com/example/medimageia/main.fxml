@@ -23,8 +23,8 @@
                         <Circle fill="#46bc3e" layoutX="1129.0" layoutY="17.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
                         <Label layoutX="799.0" layoutY="8.0" text="Bienvenue, Dr" />
                         <Label layoutX="879.0" layoutY="9.0" prefHeight="17.0" prefWidth="165.0" text="LUKADI FREDDY" />
-                        <Label alignment="CENTER_RIGHT" layoutX="597.0" layoutY="11.0" prefHeight="17.0" prefWidth="167.0" text="Bienvenue, Dr" />
-                        <Label layoutX="165.0" layoutY="9.0" prefHeight="22.0" prefWidth="277.0" text="DASHBORD">
+                        <Label alignment="CENTER_RIGHT" layoutX="597.0" layoutY="11.0" prefHeight="17.0" prefWidth="167.0" text="DD/MM/YY" />
+                        <Label layoutX="173.0" layoutY="9.0" prefHeight="22.0" prefWidth="277.0" text="DASHBORD">
                            <font>
                               <Font name="Calibri Bold" size="18.0" />
                            </font></Label>
@@ -34,11 +34,22 @@
                   <AnchorPane id="navBar" prefHeight="616.0" prefWidth="166.0" styleClass="navBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="34.0" prefWidth="133.0" text="IDENTIFIANT DR." />
-                        <Label layoutX="18.0" layoutY="58.0" prefHeight="17.0" prefWidth="35.0" text="NOM:" />
+                        <Label layoutX="18.0" layoutY="58.0" prefHeight="17.0" prefWidth="35.0" text="NOM:">
+                           <font>
+                              <Font name="Calibri Bold" size="12.0" />
+                           </font></Label>
                         <Label layoutX="53.0" layoutY="58.0" prefHeight="17.0" prefWidth="72.0" />
-                        <Label layoutX="18.0" layoutY="89.0" prefHeight="17.0" prefWidth="67.0" text="SPECIALITE:" />
+                        <Label layoutX="18.0" layoutY="89.0" prefHeight="17.0" prefWidth="67.0" text="SPECIALITE:">
+                           <font>
+                              <Font name="Calibri Bold" size="12.0" />
+                           </font>
+                        </Label>
                         <Label layoutX="83.0" layoutY="89.0" prefHeight="17.0" prefWidth="72.0" />
-                        <Label layoutX="18.0" layoutY="120.0" prefHeight="17.0" prefWidth="34.0" text="SEXE:" />
+                        <Label layoutX="18.0" layoutY="120.0" prefHeight="17.0" prefWidth="34.0" text="SEXE:">
+                           <font>
+                              <Font name="Calibri Bold" size="12.0" />
+                           </font>
+                        </Label>
                         <Label layoutX="53.0" layoutY="120.0" prefHeight="17.0" prefWidth="72.0" />
                      </children></AnchorPane>
                </left>
