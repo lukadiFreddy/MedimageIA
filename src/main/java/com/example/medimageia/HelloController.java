@@ -2,8 +2,12 @@ package com.example.medimageia;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,9 +15,11 @@ import java.sql.ResultSet;
 import java.sql.Date;
 
 public class HelloController {
+    // La Scene principale
     @FXML
     private AnchorPane main_form;
 
+    // Les Scenes du LOGIN
     @FXML
     private AnchorPane login_form;
     @FXML
@@ -29,6 +35,7 @@ public class HelloController {
     @FXML
     private Hyperlink login_back;
 
+    //Les Scenes SIGN
     @FXML
     private AnchorPane register_form;
     @FXML
@@ -57,8 +64,6 @@ public class HelloController {
         login_password.clear();
         login_checkbox.setSelected(false);
     }
-
-
 
     // Vérifie que cette classe existe bien
     private Alertmessage alert = new Alertmessage();
@@ -92,6 +97,14 @@ public class HelloController {
 
                 if(result.next()){
                     alert.successMessage("La connexion a réussie");
+                    clearLoginFields();
+                    //Fermerture des interface apres la connexion et lancement de la page main
+                    main_form.getScene().getWindow().hide();
+
+                    Parent root= FXMLLoader.load(getClass().getResource("main.fxml"));
+                    Stage stage = (Stage) login_btn.getScene().getWindow();
+                    stage.setScene(new Scene(root));
+                    stage.show();
                 }else{
                     alert.errorMessage("Vous informations sont incorrectes");
                 }
@@ -115,9 +128,6 @@ public class HelloController {
             login_password.setVisible(true);
         }
     }
-
-
-
 
     // Cette partie sert pour la creation du compte
     public void registerAcount() {
@@ -180,8 +190,13 @@ public class HelloController {
                 alert.successMessage("L'inscription a réussi");
                 clearRegisterFields();
 
-                //Fermerture des iNterfase apres la connexion
+                //Fermerture des iNterfase apres la connexion et lancement de la page main
                 main_form.getScene().getWindow().hide();
+
+                Parent root= FXMLLoader.load(getClass().getResource("main.fxml"));
+                Stage stage = (Stage) login_btn.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
             }
 
         } catch (Exception e) {
