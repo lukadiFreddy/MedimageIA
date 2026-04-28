@@ -80,3 +80,17 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
+
+.btn-scanA{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-weight: bold;
+}
+.btn-scanA:hover{
+    -fx-background-color: #000000;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}

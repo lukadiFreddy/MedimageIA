@@ -12,12 +12,11 @@
             <AnchorPane id="header" prefHeight="45.0" prefWidth="1150.0" styleClass="header" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="32.0" layoutY="-83.0" prefHeight="45.0" prefWidth="175.0" style="-fx-background-color: white;" styleClass="button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="0.0" />
-                  <Label layoutX="1062.0" layoutY="14.0" text="ACTIVE" />
-                  <Circle fill="#46bc3e" layoutX="1129.0" layoutY="23.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-                  <Label layoutX="797.0" layoutY="14.0" text="Bienvenue, Dr" />
-                  <Label layoutX="882.0" layoutY="14.0" prefHeight="17.0" prefWidth="165.0" text="LUKADI FREDDY" />
-                  <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="14.0" prefHeight="17.0" prefWidth="167.0" text="DD/MM/YYYY" />
-                  <Label layoutX="180.0" layoutY="12.0" prefHeight="22.0" prefWidth="277.0" text="DASHBOARD">
+                  <Label layoutX="1062.0" layoutY="14.0" text="ACTIVE" AnchorPane.rightAnchor="49.333333333333336" />
+                  <Circle fill="#46bc3e" layoutX="1129.0" layoutY="23.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="14.0" />
+                  <Label layoutX="729.0" layoutY="14.0" prefHeight="17.0" prefWidth="83.0" text="Bienvenue, Dr" AnchorPane.rightAnchor="338.0" />
+                  <Label layoutX="812.0" layoutY="14.0" prefHeight="17.0" prefWidth="100.0" text="LUKADI FREDDY" AnchorPane.rightAnchor="238.0" />
+                  <Label layoutX="180.0" layoutY="12.0" prefHeight="22.0" prefWidth="277.0" text="DASHBOARD" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="12.0">
                      <font>
                         <Font name="Calibri Bold" size="18.0" />
                      </font></Label>
@@ -27,32 +26,40 @@
          <left>
             <AnchorPane id="navBar" prefHeight="605.0" prefWidth="176.0" styleClass="navBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="7.0" prefHeight="34.0" prefWidth="133.0" text="IDENTIFIANT DR." />
-                  <Label layoutX="18.0" layoutY="49.0" prefHeight="17.0" prefWidth="35.0" text="NOM:">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="3.0" prefHeight="22.0" prefWidth="133.0" text="IDENTIFIANT DR.">
                      <font>
-                        <Font name="Calibri Bold" size="12.0" />
+                        <Font name="Calibri Bold Italic" size="12.0" />
                      </font></Label>
-                  <Label layoutX="53.0" layoutY="49.0" prefHeight="17.0" prefWidth="72.0" />
-                  <Label layoutX="19.0" layoutY="97.0" prefHeight="17.0" prefWidth="67.0" text="SPECIALITE:">
+                  <Label layoutX="18.0" layoutY="47.0" prefHeight="17.0" prefWidth="35.0" text="NOM:">
                      <font>
-                        <Font name="Calibri Bold" size="12.0" />
+                        <Font name="Calibri" size="14.0" />
+                     </font></Label>
+                  <Label layoutX="88.0" layoutY="47.0" prefHeight="17.0" prefWidth="47.0" text="FREDDY" />
+                  <Label layoutX="19.0" layoutY="73.0" prefHeight="17.0" prefWidth="34.0" text="SEXE:">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="53.0" layoutY="71.0" prefHeight="17.0" prefWidth="72.0" />
-                  <Label layoutX="19.0" layoutY="71.0" prefHeight="17.0" prefWidth="34.0" text="SEXE:">
+                  <Label layoutX="88.0" layoutY="73.0" prefHeight="17.0" prefWidth="54.0" text="FREDDY" />
+                  <Label layoutX="19.0" layoutY="104.0" prefHeight="17.0" prefWidth="67.0" text="SPECT">
                      <font>
-                        <Font name="Calibri Bold" size="12.0" />
+                        <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="84.0" layoutY="97.0" prefHeight="17.0" prefWidth="72.0" />
-                  <Line endX="65.0" layoutX="102.0" layoutY="138.0" startX="-100.0" />
-                  <Label layoutX="14.0" layoutY="153.0" prefHeight="17.0" prefWidth="68.0" text="LISTE MENU" />
-                  <Button layoutX="17.0" layoutY="184.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="DASHBOARD" />
-                  <Button layoutX="17.0" layoutY="248.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="DOCTEUR" />
-                  <Button layoutX="18.0" layoutY="308.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="LISTE SCANNE" />
-                  <Button layoutX="17.0" layoutY="367.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="APPOINTEMENT" />
-                  <Label layoutX="16.0" layoutY="442.0" prefHeight="17.0" prefWidth="51.0" text="PROFIL" />
-                  <Button layoutX="18.0" layoutY="477.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="PROFIL" />
+                  <Label layoutX="88.0" layoutY="104.0" prefHeight="17.0" prefWidth="47.0" text="FREDDY" />
+                  <Label alignment="CENTER" layoutX="39.0" layoutY="152.0" prefHeight="17.0" prefWidth="88.0" text="LISTE MENU">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font></Label>
+                  <Button layoutX="21.0" layoutY="185.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="DASHBOARD" />
+                  <Button layoutX="21.0" layoutY="234.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="DOCTEUR" />
+                  <Button layoutX="21.0" layoutY="289.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="LISTE SCANNE" />
+                  <Button layoutX="23.0" layoutY="344.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="APPOINTEMENT" />
+                  <Label alignment="CENTER" layoutX="56.0" layoutY="415.0" prefHeight="17.0" prefWidth="51.0" text="PROFIL">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="12.0" />
+                     </font></Label>
+                  <Button layoutX="18.0" layoutY="459.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="PROFIL" />
                </children>
             </AnchorPane>
          </left>
