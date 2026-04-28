@@ -7,57 +7,65 @@
 
 <StackPane id="accueil" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1150.0" styleClass="accueil" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-            <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <top>
-                  <AnchorPane id="header" prefHeight="34.0" prefWidth="1150.0" styleClass="header" stylesheets="@style.css" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label layoutX="14.0" layoutY="9.0" text="ACCUEIL">
-                           <font>
-                              <Font name="Calibri Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <AnchorPane layoutX="32.0" layoutY="-83.0" prefHeight="34.0" prefWidth="167.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="983.0" AnchorPane.topAnchor="0.0" />
-                        <Label layoutX="1076.0" layoutY="8.0" text="ACTIVE" />
-                        <Circle fill="#46bc3e" layoutX="1129.0" layoutY="17.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label layoutX="802.0" layoutY="8.0" text="Bienvenue, Dr" />
-                        <Label layoutX="882.0" layoutY="8.0" prefHeight="17.0" prefWidth="165.0" text="LUKADI FREDDY" />
-                        <Label alignment="CENTER_RIGHT" layoutX="597.0" layoutY="11.0" prefHeight="17.0" prefWidth="167.0" text="DD/MM/YYYY" />
-                        <Label layoutX="173.0" layoutY="9.0" prefHeight="22.0" prefWidth="277.0" text="DASHBORD">
-                           <font>
-                              <Font name="Calibri Bold" size="18.0" />
-                           </font></Label>
-                     </children></AnchorPane>
-               </top>
-               <left>
-                  <AnchorPane id="navBar" prefHeight="616.0" prefWidth="166.0" styleClass="navBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="34.0" prefWidth="133.0" text="IDENTIFIANT DR." />
-                        <Label layoutX="18.0" layoutY="58.0" prefHeight="17.0" prefWidth="35.0" text="NOM:">
-                           <font>
-                              <Font name="Calibri Bold" size="12.0" />
-                           </font></Label>
-                        <Label layoutX="53.0" layoutY="58.0" prefHeight="17.0" prefWidth="72.0" />
-                        <Label layoutX="18.0" layoutY="89.0" prefHeight="17.0" prefWidth="67.0" text="SPECIALITE:">
-                           <font>
-                              <Font name="Calibri Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="83.0" layoutY="89.0" prefHeight="17.0" prefWidth="72.0" />
-                        <Label layoutX="18.0" layoutY="120.0" prefHeight="17.0" prefWidth="34.0" text="SEXE:">
-                           <font>
-                              <Font name="Calibri Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="53.0" layoutY="120.0" prefHeight="17.0" prefWidth="72.0" />
-                     </children></AnchorPane>
-               </left>
-               <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
-         </children>
-      </AnchorPane>
+      <BorderPane>
+         <top>
+            <AnchorPane id="header" prefHeight="45.0" prefWidth="1150.0" styleClass="header" stylesheets="@style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="32.0" layoutY="-83.0" prefHeight="45.0" prefWidth="175.0" style="-fx-background-color: white;" styleClass="button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="975.0" AnchorPane.topAnchor="0.0" />
+                  <Label layoutX="1062.0" layoutY="14.0" text="ACTIVE" />
+                  <Circle fill="#46bc3e" layoutX="1129.0" layoutY="23.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Label layoutX="797.0" layoutY="14.0" text="Bienvenue, Dr" />
+                  <Label layoutX="882.0" layoutY="14.0" prefHeight="17.0" prefWidth="165.0" text="LUKADI FREDDY" />
+                  <Label alignment="CENTER_RIGHT" layoutX="591.0" layoutY="14.0" prefHeight="17.0" prefWidth="167.0" text="DD/MM/YYYY" />
+                  <Label layoutX="180.0" layoutY="12.0" prefHeight="22.0" prefWidth="277.0" text="DASHBOARD">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font></Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane id="navBar" prefHeight="605.0" prefWidth="176.0" styleClass="navBar" stylesheets="@style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="7.0" prefHeight="34.0" prefWidth="133.0" text="IDENTIFIANT DR." />
+                  <Label layoutX="18.0" layoutY="49.0" prefHeight="17.0" prefWidth="35.0" text="NOM:">
+                     <font>
+                        <Font name="Calibri Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="53.0" layoutY="49.0" prefHeight="17.0" prefWidth="72.0" />
+                  <Label layoutX="19.0" layoutY="97.0" prefHeight="17.0" prefWidth="67.0" text="SPECIALITE:">
+                     <font>
+                        <Font name="Calibri Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="53.0" layoutY="71.0" prefHeight="17.0" prefWidth="72.0" />
+                  <Label layoutX="19.0" layoutY="71.0" prefHeight="17.0" prefWidth="34.0" text="SEXE:">
+                     <font>
+                        <Font name="Calibri Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="84.0" layoutY="97.0" prefHeight="17.0" prefWidth="72.0" />
+                  <Line endX="65.0" layoutX="102.0" layoutY="138.0" startX="-100.0" />
+                  <Label layoutX="14.0" layoutY="153.0" prefHeight="17.0" prefWidth="68.0" text="LISTE MENU" />
+                  <Button layoutX="17.0" layoutY="184.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="DASHBOARD" />
+                  <Button layoutX="17.0" layoutY="248.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="DOCTEUR" />
+                  <Button layoutX="18.0" layoutY="308.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="LISTE SCANNE" />
+                  <Button layoutX="17.0" layoutY="367.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="APPOINTEMENT" />
+                  <Label layoutX="16.0" layoutY="442.0" prefHeight="17.0" prefWidth="51.0" text="PROFIL" />
+                  <Button layoutX="18.0" layoutY="477.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" text="PROFIL" />
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="765.0" layoutY="541.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font></Button>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
    </children>
 </StackPane>

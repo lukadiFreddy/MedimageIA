@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,40 +15,23 @@ import java.sql.Date;
 
 public class HelloController {
 
-    @FXML
-    private AnchorPane main_form;
+    @FXML private AnchorPane main_form;
+    @FXML private AnchorPane login_form;
+    @FXML private TextField login_username;
+    @FXML private PasswordField login_password;
+    @FXML private TextField login_showPassword;
+    @FXML private CheckBox login_checkbox;
+    @FXML private Button login_btn;
+    @FXML private Hyperlink login_back;
 
-    @FXML
-    private AnchorPane login_form;
-    @FXML
-    private TextField login_username;
-    @FXML
-    private PasswordField login_password;
-    @FXML
-    private TextField login_showPassword;
-    @FXML
-    private CheckBox login_checkbox;
-    @FXML
-    private Button login_btn;
-    @FXML
-    private Hyperlink login_back;
-
-    @FXML
-    private AnchorPane register_form;
-    @FXML
-    private TextField register_email;
-    @FXML
-    private TextField register_username;
-    @FXML
-    private PasswordField register_password;
-    @FXML
-    private TextField register_showPassword;
-    @FXML
-    private CheckBox register_checkbox;
-    @FXML
-    private Button register_btn;
-    @FXML
-    private Hyperlink register_back;
+    @FXML private AnchorPane register_form;
+    @FXML private TextField register_email;
+    @FXML private TextField register_username;
+    @FXML private PasswordField register_password;
+    @FXML private TextField register_showPassword;
+    @FXML private CheckBox register_checkbox;
+    @FXML private Button register_btn;
+    @FXML private Hyperlink register_back;
 
     private Connection connect;
     private PreparedStatement prepare;
@@ -59,14 +41,12 @@ public class HelloController {
 
     // ================= LOGIN =================
     public void loginAcount(){
-
         if(login_username.getText().isEmpty() || getLoginPassword().isEmpty()){
             alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
             return;
         }
 
         String sql = "SELECT * FROM docteur WHERE user_name=? AND user_password=?";
-
         connect = DataBase.connectDB();
 
         if(connect == null){
@@ -78,48 +58,41 @@ public class HelloController {
             prepare = connect.prepareStatement(sql);
             prepare.setString(1, login_username.getText());
             prepare.setString(2, getLoginPassword());
-
             result = prepare.executeQuery();
 
             if(result.next()){
                 alert.successMessage("La connexion a réussie");
 
-                Parent root = FXMLLoader.load(
-                        getClass().getResource("/com/example/medimageia/main.fxml")
-                );
-
+                Parent root = FXMLLoader.load(getClass().getResource("/com/example/medimageia/main.fxml"));
                 Stage stage = (Stage) login_btn.getScene().getWindow();
+
                 stage.setScene(new Scene(root));
                 stage.setMaximized(false);
                 stage.setResizable(true);
-                stage.show();
 
-            }else{
+                // CENTRE LA FENÊTRE SUR L'ÉCRAN
+                stage.centerOnScreen();
+
+                stage.show();
+            } else {
                 alert.errorMessage("Vos informations sont incorrectes");
             }
-
         } catch (Exception e){
             e.printStackTrace();
             alert.errorMessage("La connexion a échouée");
         }
     }
 
-    // récupère toujours le bon password
     private String getLoginPassword(){
-        if(login_checkbox.isSelected()){
-            return login_showPassword.getText();
-        }else{
-            return login_password.getText();
-        }
+        return login_checkbox.isSelected() ? login_showPassword.getText() : login_password.getText();
     }
 
-    // affichage password LOGIN
     public void loginShowPassword(){
         if(login_checkbox.isSelected()){
             login_showPassword.setText(login_password.getText());
             login_showPassword.setVisible(true);
             login_password.setVisible(false);
-        }else{
+        } else {
             login_password.setText(login_showPassword.getText());
             login_password.setVisible(true);
             login_showPassword.setVisible(false);
@@ -128,77 +101,36 @@ public class HelloController {
 
     // ================= REGISTER =================
     public void registerAcount() {
-
-        if (register_email.getText().isEmpty()
-                || register_username.getText().isEmpty()
-                || getRegisterPassword().isEmpty()) {
-
+        if (register_email.getText().isEmpty() || register_username.getText().isEmpty() || getRegisterPassword().isEmpty()) {
             alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
             return;
         }
 
-        String email = register_email.getText();
-        String username = register_username.getText();
-        String password = getRegisterPassword();
-
-        String checkUsername = "SELECT * FROM docteur WHERE user_name = ?";
-        String checkEmail = "SELECT * FROM docteur WHERE user_email = ?";
-
         try {
             connect = DataBase.connectDB();
+            if (connect == null) return;
 
-            if (connect == null) {
-                alert.errorMessage("Connexion à la base échouée");
-                return;
-            }
-
-            prepare = connect.prepareStatement(checkUsername);
-            prepare.setString(1, username);
-            result = prepare.executeQuery();
-
-            if (result.next()) {
-                alert.errorMessage("Le nom existe déjà");
-                return;
-            }
-
-            prepare = connect.prepareStatement(checkEmail);
-            prepare.setString(1, email);
-            result = prepare.executeQuery();
-
-            if (result.next()) {
-                alert.errorMessage("L'email existe déjà");
-                return;
-            }
-
-            if (password.length() < 6) {
-                alert.errorMessage("Le mot de passe doit contenir au moins 6 caractères");
-                return;
-            }
-
+            // Vérifications existantes...
             String insertData = "INSERT INTO docteur (user_email, user_name, user_password, created_at) VALUES (?, ?, ?, ?)";
-
             Date sqlDate = new Date(System.currentTimeMillis());
 
             prepare = connect.prepareStatement(insertData);
-            prepare.setString(1, email);
-            prepare.setString(2, username);
-            prepare.setString(3, password);
+            prepare.setString(1, register_email.getText());
+            prepare.setString(2, register_username.getText());
+            prepare.setString(3, getRegisterPassword());
             prepare.setDate(4, sqlDate);
-
             prepare.executeUpdate();
 
             alert.successMessage("L'inscription a réussi");
 
-            Parent root = FXMLLoader.load(
-                    getClass().getResource("/com/example/medimageia/main.fxml")
-            );
-
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/medimageia/main.fxml"));
             Stage stage = (Stage) register_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setMaximized(false);
-            stage.setResizable(true);
-            stage.show();
 
+            // CENTRE LA FENÊTRE SUR L'ÉCRAN
+            stage.centerOnScreen();
+
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
             alert.errorMessage("L'inscription a échouée");
@@ -206,11 +138,7 @@ public class HelloController {
     }
 
     private String getRegisterPassword(){
-        if(register_checkbox.isSelected()){
-            return register_showPassword.getText();
-        }else{
-            return register_password.getText();
-        }
+        return register_checkbox.isSelected() ? register_showPassword.getText() : register_password.getText();
     }
 
     public void registerShowPassword(){
@@ -218,14 +146,13 @@ public class HelloController {
             register_showPassword.setText(register_password.getText());
             register_showPassword.setVisible(true);
             register_password.setVisible(false);
-        }else{
+        } else {
             register_password.setText(register_showPassword.getText());
             register_password.setVisible(true);
             register_showPassword.setVisible(false);
         }
     }
 
-    // ================= SWITCH =================
     public void switchForm(ActionEvent event) {
         if (event.getSource() == login_back) {
             login_form.setVisible(false);

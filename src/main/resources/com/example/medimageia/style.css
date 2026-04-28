@@ -61,9 +61,22 @@
     -fx-background-color: white;
 }
 .header{
-    -fx-background-color: #c6c6c6;
+    -fx-background-color: linear-gradient(to left, white, lightslategray);
 }
 .navBar{
-    -fx-background-color: #c6c6c6;
+    -fx-background-color: linear-gradient(to top, white, lightslategray);
+}
+.btn-scan{
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-weight: bold;
 }
 
+.btn-scan:hover{
+    -fx-background-color: #246324;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
