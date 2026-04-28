@@ -90,6 +90,7 @@ public class HelloController {
 
                 Stage stage = (Stage) login_btn.getScene().getWindow();
                 stage.setScene(new Scene(root));
+                stage.setMaximized(false);
                 stage.setResizable(true);
                 stage.show();
 
@@ -194,6 +195,7 @@ public class HelloController {
 
             Stage stage = (Stage) register_btn.getScene().getWindow();
             stage.setScene(new Scene(root));
+            stage.setMaximized(false);
             stage.setResizable(true);
             stage.show();
 
