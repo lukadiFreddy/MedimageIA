@@ -94,3 +94,14 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
+
+.border-top{
+    -fx-background-color: white; /* Nécessaire pour que l'ombre soit visible */
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px; /* Des coins arrondis font plus "moderne" */
+    -fx-background-radius: 8px;
+
+    /* Ombre légère par défaut */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}

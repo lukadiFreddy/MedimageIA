@@ -16,9 +16,9 @@
                   <Circle fill="#46bc3e" layoutX="1129.0" layoutY="23.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="14.0" />
                   <Label layoutX="729.0" layoutY="14.0" prefHeight="17.0" prefWidth="83.0" text="Bienvenue, Dr" AnchorPane.rightAnchor="338.0" />
                   <Label layoutX="812.0" layoutY="14.0" prefHeight="17.0" prefWidth="100.0" text="LUKADI FREDDY" AnchorPane.rightAnchor="238.0" />
-                  <Label layoutX="180.0" layoutY="12.0" prefHeight="22.0" prefWidth="277.0" text="DASHBOARD" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="12.0">
+                  <Label layoutX="186.0" layoutY="12.0" prefHeight="22.0" prefWidth="111.0" text="MEDIMAGE-IA" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="12.0">
                      <font>
-                        <Font name="Calibri Bold" size="18.0" />
+                        <Font name="Arial Bold" size="16.0" />
                      </font></Label>
                </children>
             </AnchorPane>
@@ -47,29 +47,31 @@
                      </font>
                   </Label>
                   <Label layoutX="88.0" layoutY="104.0" prefHeight="17.0" prefWidth="47.0" text="FREDDY" />
-                  <Label alignment="CENTER" layoutX="39.0" layoutY="152.0" prefHeight="17.0" prefWidth="88.0" text="LISTE MENU">
+                  <Label alignment="CENTER" layoutX="38.0" layoutY="165.0" prefHeight="17.0" prefWidth="88.0" text="LISTE MENU">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font></Label>
-                  <Button layoutX="21.0" layoutY="185.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="DASHBOARD" />
-                  <Button layoutX="21.0" layoutY="234.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="DOCTEUR" />
-                  <Button layoutX="21.0" layoutY="289.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="LISTE SCANNE" />
-                  <Button layoutX="23.0" layoutY="344.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="APPOINTEMENT" />
-                  <Label alignment="CENTER" layoutX="56.0" layoutY="415.0" prefHeight="17.0" prefWidth="51.0" text="PROFIL">
+                  <Button layoutX="17.0" layoutY="220.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="DASHBOARD" />
+                  <Button layoutX="17.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="LISTE SCANNE" />
+                  <Label alignment="CENTER" layoutX="60.0" layoutY="390.0" prefHeight="17.0" prefWidth="51.0" text="PROFIL">
                      <font>
                         <Font name="Calibri Bold Italic" size="12.0" />
                      </font></Label>
-                  <Button layoutX="18.0" layoutY="459.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="PROFIL" />
+                  <Button layoutX="23.0" layoutY="446.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="130.0" styleClass="btn-scanA" text="PROFIL" />
                </children>
             </AnchorPane>
          </left>
          <center>
             <AnchorPane style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                <children>
-                  <Button layoutX="765.0" layoutY="541.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
+                  <Button layoutX="407.0" layoutY="495.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
                      <font>
                         <Font name="Calibri Bold" size="14.0" />
                      </font></Button>
+                  <AnchorPane layoutX="72.0" layoutY="150.0" prefHeight="186.0" prefWidth="287.0" styleClass="border-top" />
+                  <AnchorPane layoutX="525.0" layoutY="78.0" prefHeight="341.0" prefWidth="347.0" styleClass="border-top" />
+                  <Label alignment="CENTER" layoutX="148.0" layoutY="115.0" prefHeight="17.0" prefWidth="136.0" text="L'IMAGE APPARAIT ICI" />
+                  <Label alignment="CENTER" layoutX="636.0" layoutY="36.0" prefHeight="17.0" prefWidth="136.0" text="LA REPONSE DE L'IA" />
                </children>
             </AnchorPane>
          </center>
