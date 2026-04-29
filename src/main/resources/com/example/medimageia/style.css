@@ -105,3 +105,55 @@
     /* Ombre légère par défaut */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
 }
+/* Table principale */
+.clean-table {
+    -fx-background-color: white;
+    -fx-border-color: #aeaeae;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+/* Header */
+.clean-table .column-header-background {
+    -fx-background-color: #c1c1c1;
+}
+
+.clean-table .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+
+.clean-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Lignes */
+.clean-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #eeeeee transparent;
+}
+
+.clean-table .table-row-cell:odd {
+    -fx-background-color: #f7f7f7;
+}
+
+/* Hover */
+.clean-table .table-row-cell:hover {
+    -fx-background-color: #eaeaea;
+}
+
+/* Sélection */
+.clean-table .table-row-cell:selected {
+    -fx-background-color: #333333;
+}
+
+.clean-table .table-row-cell:selected .text {
+    -fx-fill: white;
+}
+
+/* Cellules */
+.clean-table .table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 8px;
+}
