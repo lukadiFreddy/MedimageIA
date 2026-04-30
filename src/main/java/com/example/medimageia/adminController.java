@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -25,7 +26,18 @@ public class adminController implements Initializable {
     @FXML
     private AnchorPane center_scan;
     @FXML
-    private TableColumn center_scanTab;
+    private TableView center_scanTab;
+    @FXML
+    private TableColumn center_scanTabId;
+    @FXML
+    private TableColumn center_scanTabNom;
+    @FXML
+    private TableColumn center_scanTabImage;
+    @FXML
+    private TableColumn center_scanTabDiagnostic;
+    @FXML
+    private TableColumn center_scanTabAction;
+
 
     //Element centre profil
     @FXML
