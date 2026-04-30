@@ -61,10 +61,10 @@
     -fx-background-color: white;
 }
 .header{
-    -fx-background-color: linear-gradient(to left, white, lightslategray);
+    -fx-background-color: linear-gradient(to left, white, #9da8b8);
 }
 .navBar{
-    -fx-background-color: linear-gradient(to top, white, lightslategray);
+    -fx-background-color: linear-gradient(to top, white, #9da8b8);
 }
 .btn-scan{
     -fx-background-color: white;

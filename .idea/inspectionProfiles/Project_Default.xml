@@ -37,6 +37,10 @@
       <option name="ignoreGettersAndSetters" value="false" />
       <option name="ignoreOverridingMethods" value="false" />
     </inspection_tool>
+    <inspection_tool class="RawUseOfParameterizedType" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoreObjectConstruction" value="true" />
+      <option name="ignoreTypeCasts" value="true" />
+    </inspection_tool>
     <inspection_tool class="ThreadDumpStack" enabled="true" level="WARNING" enabled_by_default="true" />
   </profile>
 </component>
