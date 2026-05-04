@@ -61,6 +61,9 @@ public class HelloController {
             result = prepare.executeQuery();
 
             if(result.next()){
+
+                Data.admin_username = login_username.getText();
+
                 alert.successMessage("La connexion a réussie");
 
                 Parent root = FXMLLoader.load(getClass().getResource("/com/example/medimageia/main.fxml"));

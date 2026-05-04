@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane id="accueil" prefHeight="650.0" prefWidth="1150.0" styleClass="accueil" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane id="accueil" prefHeight="650.0" prefWidth="1150.0" styleClass="accueil" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.medimageia.adminController">
 
    <children>
       <BorderPane>
@@ -30,6 +30,7 @@
                         <Font name="Calibri Bold" size="16.0" />
                      </font>
                   </Label>
+                  <Label fx:id="date_time" alignment="CENTER" layoutX="485.0" layoutY="12.0" prefHeight="17.0" prefWidth="197.0" text="MM//DD/YYYY" />
                </children>
             </AnchorPane>
          </top>
@@ -74,13 +75,13 @@
 
                   <Label layoutX="55.0" layoutY="167.0" text="LISTE MENU" />
 
-                  <Button fx:id="analyse_btn" alignment="CENTER" layoutX="23.0" layoutY="220.0" prefWidth="130.0" styleClass="btn-scanA" text="ANALYSE IA" />
+                  <Button fx:id="analyse_btn" alignment="CENTER" layoutX="23.0" layoutY="220.0" onAction="#switchForm" prefWidth="130.0" styleClass="btn-scanA" text="ANALYSE IA" />
 
-                  <Button fx:id="listScan_btn" alignment="CENTER" layoutX="23.0" layoutY="296.0" prefWidth="130.0" styleClass="btn-scanA" text="LISTE DES SCANS" />
+                  <Button fx:id="listScan_btn" alignment="CENTER" layoutX="23.0" layoutY="296.0" onAction="#switchForm" prefWidth="130.0" styleClass="btn-scanA" text="LISTE DES SCANS" />
 
                   <Label layoutX="69.0" layoutY="390.0" text="PROFIL" />
 
-                  <Button fx:id="profile_btn" alignment="CENTER" layoutX="23.0" layoutY="443.0" prefWidth="130.0" styleClass="btn-scanA" text="PROFIL" />
+                  <Button fx:id="profile_btn" alignment="CENTER" layoutX="23.0" layoutY="443.0" onAction="#switchForm" prefWidth="130.0" styleClass="btn-scanA" text="PROFIL" />
                </children>
             </AnchorPane>
          </left>
@@ -90,18 +91,18 @@
             <AnchorPane BorderPane.alignment="CENTER">
 
                <!-- 🔥 TON CONTENU EXISTANT -->
-               <AnchorPane fx:id="centre_ia" prefHeight="603.0" prefWidth="1035.0" style="-fx-background-color: white;">
+               <AnchorPane fx:id="centre_ia" layoutY="1.0" prefHeight="603.0" prefWidth="1035.0" style="-fx-background-color: white;">
 
                   <children>
 
-                     <Label layoutX="148.0" layoutY="115.0" text="L'IMAGE APPARAIT ICI" />
+                     <Label layoutX="156.0" layoutY="116.0" text="L'IMAGE APPARAIT ICI" />
 
-                     <Label layoutX="636.0" layoutY="36.0" text="LA REPONSE DE L'IA" />
+                     <Label layoutX="645.0" layoutY="41.0" text="LA REPONSE DE L'IA" />
 
                      <AnchorPane fx:id="centre_iaImage" layoutX="72.0" layoutY="150.0" prefHeight="186.0" prefWidth="287.0" styleClass="border-top" />
 
                      <AnchorPane fx:id="centre_iaReponse" layoutX="525.0" layoutY="78.0" prefHeight="341.0" prefWidth="347.0" styleClass="border-top" />
-                     <Button fx:id="centre_iaBtn" layoutX="407.0" layoutY="495.0" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
+                     <Button fx:id="centre_iaBtn" layoutX="438.0" layoutY="521.0" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
                         <font>
                            <Font name="Calibri Bold" size="14.0" />
                         </font>
@@ -116,7 +117,7 @@
                            <Font name="Calibri Bold" size="18.0" />
                         </font>
                      </Label>
-                     <TableView layoutX="30.0" layoutY="66.0" prefHeight="474.0" prefWidth="976.0" styleClass="clean-table" AnchorPane.bottomAnchor="65.33333333333337" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="66.0">
+                     <TableView fx:id="center_scanTabView" layoutX="30.0" layoutY="66.0" prefHeight="474.0" prefWidth="976.0" styleClass="clean-table" AnchorPane.bottomAnchor="65.33333333333337" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="66.0">
                         <columns>
                            <TableColumn fx:id="center_scanTabId" prefWidth="90.0" text="IDENTIFIANT" />
                            <TableColumn fx:id="center_scanTabNom" prefWidth="246.0" text="NOMS" />
