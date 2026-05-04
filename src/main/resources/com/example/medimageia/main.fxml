@@ -90,7 +90,7 @@
             <AnchorPane BorderPane.alignment="CENTER">
 
                <!-- 🔥 TON CONTENU EXISTANT -->
-               <AnchorPane fx:id="centre_ia" prefHeight="603.0" prefWidth="1035.0" style="-fx-background-color: white;" visible="false">
+               <AnchorPane fx:id="centre_ia" prefHeight="603.0" prefWidth="1035.0" style="-fx-background-color: white;">
 
                   <children>
 
@@ -109,7 +109,7 @@
                   </children>
 
                </AnchorPane>
-               <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0">
+               <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0" visible="false">
                   <children>
                      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="14.0" prefHeight="22.0" prefWidth="191.0" text="LISTE DES SCANNAGES">
                         <font>
