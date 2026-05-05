@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class adminController implements Initializable {
 
+    @FXML private Label top_profile;
     @FXML private Label date_time;
 
     // HEADER USER
@@ -30,12 +31,12 @@ public class adminController implements Initializable {
 
     // CENTRE SCAN
     @FXML private AnchorPane center_scan;
-    @FXML private TableView center_scanTabView;
-    @FXML private TableColumn center_scanTabId;
-    @FXML private TableColumn center_scanTabNom;
-    @FXML private TableColumn center_scanTabImage;
-    @FXML private TableColumn center_scanTabDiagnostic;
-    @FXML private TableColumn center_scanTabAction;
+    @FXML private TableView<?> center_scanTabView;
+    @FXML private TableColumn<?, ?> center_scanTabId;
+    @FXML private TableColumn<?, ?> center_scanTabNom;
+    @FXML private TableColumn<?, ?> center_scanTabImage;
+    @FXML private TableColumn<?, ?> center_scanTabDiagnostic;
+    @FXML private TableColumn<?, ?> center_scanTabAction;
     @FXML private Button listScan_btn;
 
     // PROFIL
@@ -47,39 +48,43 @@ public class adminController implements Initializable {
     private PreparedStatement prepare;
     private ResultSet result;
 
-    // AFFICHER NOM ADMIN
+    // ================= AFFICHER NOM =================
     public void displayAdminUsername() {
 
-        String sql = "SELECT username FROM admin WHERE username = ?";
-
+        String sql = "SELECT user_name FROM docteur WHERE user_name = ?";
         connect = DataBase.connectDB();
 
         try {
             prepare = connect.prepareStatement(sql);
             prepare.setString(1, Data.admin_username);
-
             result = prepare.executeQuery();
 
             if (result.next()) {
 
-                String username = result.getString("username");
+                String username = result.getString("user_name");
 
-                String formatted = username.substring(0, 1).toUpperCase()
-                        + username.substring(1).toLowerCase();
+                if (username != null && !username.isEmpty()) {
+                    String formatted = username.toUpperCase();
 
-                // HEADER
-                top_userName.setText(formatted);
-
-                // SIDEBAR
-                nav_userName.setText(formatted);
+                    top_userName.setText(formatted);
+                    nav_userName.setText(formatted);
+                }
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (result != null) result.close();
+                if (prepare != null) prepare.close();
+                if (connect != null) connect.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    // SWITCH VUES
+    // ================= SWITCH VUES =================
     public void switchForm(ActionEvent event) {
 
         centre_ia.setVisible(false);
@@ -95,7 +100,7 @@ public class adminController implements Initializable {
         }
     }
 
-    // TIME
+    // ================= TIME =================
     public void runTime() {
         Thread thread = new Thread(() -> {
             SimpleDateFormat format = new SimpleDateFormat("EEEE dd MMMM yyyy HH:mm:ss");

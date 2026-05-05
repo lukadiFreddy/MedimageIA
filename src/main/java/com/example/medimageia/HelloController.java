@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,8 +42,9 @@ public class HelloController {
 
     // ================= LOGIN =================
     public void loginAcount(){
+
         if(login_username.getText().isEmpty() || getLoginPassword().isEmpty()){
-            alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
+            alert.errorMessage("Veuillez remplir tous les champs");
             return;
         }
 
@@ -62,32 +64,33 @@ public class HelloController {
 
             if(result.next()){
 
+                // ✔ IMPORTANT
                 Data.admin_username = login_username.getText();
 
-                alert.successMessage("La connexion a réussie");
+                alert.successMessage("Connexion réussie");
 
                 Parent root = FXMLLoader.load(getClass().getResource("/com/example/medimageia/main.fxml"));
                 Stage stage = (Stage) login_btn.getScene().getWindow();
 
                 stage.setScene(new Scene(root));
-                stage.setMaximized(false);
                 stage.setResizable(true);
-
-                // CENTRE LA FENÊTRE SUR L'ÉCRAN
                 stage.centerOnScreen();
-
                 stage.show();
+
             } else {
-                alert.errorMessage("Vos informations sont incorrectes");
+                alert.errorMessage("Informations incorrectes");
             }
+
         } catch (Exception e){
             e.printStackTrace();
-            alert.errorMessage("La connexion a échouée");
+            alert.errorMessage("Erreur de connexion");
         }
     }
 
     private String getLoginPassword(){
-        return login_checkbox.isSelected() ? login_showPassword.getText() : login_password.getText();
+        return login_checkbox.isSelected()
+                ? login_showPassword.getText()
+                : login_password.getText();
     }
 
     public void loginShowPassword(){
@@ -104,8 +107,12 @@ public class HelloController {
 
     // ================= REGISTER =================
     public void registerAcount() {
-        if (register_email.getText().isEmpty() || register_username.getText().isEmpty() || getRegisterPassword().isEmpty()) {
-            alert.errorMessage("Veuillez remplir tous les champs s'il vous plait");
+
+        if (register_email.getText().isEmpty()
+                || register_username.getText().isEmpty()
+                || getRegisterPassword().isEmpty()) {
+
+            alert.errorMessage("Veuillez remplir tous les champs");
             return;
         }
 
@@ -113,35 +120,38 @@ public class HelloController {
             connect = DataBase.connectDB();
             if (connect == null) return;
 
-            // Vérifications existantes...
             String insertData = "INSERT INTO docteur (user_email, user_name, user_password, created_at) VALUES (?, ?, ?, ?)";
-            Date sqlDate = new Date(System.currentTimeMillis());
 
             prepare = connect.prepareStatement(insertData);
             prepare.setString(1, register_email.getText());
             prepare.setString(2, register_username.getText());
             prepare.setString(3, getRegisterPassword());
-            prepare.setDate(4, sqlDate);
+            prepare.setDate(4, new Date(System.currentTimeMillis()));
+
             prepare.executeUpdate();
 
-            alert.successMessage("L'inscription a réussi");
+            // ✔ IMPORTANT
+            Data.admin_username = register_username.getText();
+
+            alert.successMessage("Inscription réussie");
 
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/medimageia/main.fxml"));
             Stage stage = (Stage) register_btn.getScene().getWindow();
+
             stage.setScene(new Scene(root));
-
-            // CENTRE LA FENÊTRE SUR L'ÉCRAN
             stage.centerOnScreen();
-
             stage.show();
+
         } catch (Exception e) {
             e.printStackTrace();
-            alert.errorMessage("L'inscription a échouée");
+            alert.errorMessage("Erreur inscription");
         }
     }
 
     private String getRegisterPassword(){
-        return register_checkbox.isSelected() ? register_showPassword.getText() : register_password.getText();
+        return register_checkbox.isSelected()
+                ? register_showPassword.getText()
+                : register_password.getText();
     }
 
     public void registerShowPassword(){
@@ -156,7 +166,9 @@ public class HelloController {
         }
     }
 
+    // ================= SWITCH FORM =================
     public void switchForm(ActionEvent event) {
+
         if (event.getSource() == login_back) {
             login_form.setVisible(false);
             register_form.setVisible(true);

@@ -23,7 +23,10 @@
 
                   <Label text="Bienvenue, Dr" AnchorPane.rightAnchor="338.0" AnchorPane.topAnchor="14.0" />
 
-                  <Label fx:id="top_userName" text="LUKADI FREDDY" AnchorPane.rightAnchor="238.0" AnchorPane.topAnchor="14.0" />
+                  <Label fx:id="top_userName" layoutX="881.0" layoutY="14.0" prefHeight="17.0" prefWidth="145.0" text="LUKADI" AnchorPane.rightAnchor="185.66666666666674" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font></Label>
 
                   <Label text="MEDIMAGE-IA" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="12.0">
                      <font>
@@ -46,31 +49,22 @@
                      </font>
                   </Label>
 
-                  <Label layoutX="31.0" layoutY="44.0" text="NOM:">
+                  <Label layoutX="24.0" layoutY="43.0" text="DR.">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label fx:id="nav_userName" layoutX="101.0" layoutY="44.0" text="FREDDY">
+                  <Label fx:id="nav_userName" layoutX="72.0" layoutY="44.0" text="LUKADI">
                      <font>
-                        <Font size="14.0" />
-                     </font></Label>
-
-                  <Label layoutX="32.0" layoutY="70.0" text="SEXE:">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Label fx:id="nav_userSexe" layoutX="101.0" layoutY="70.0" text="FREDDY">
-                     <font>
-                        <Font size="14.0" />
+                        <Font name="Tahoma Bold" size="14.0" />
                      </font></Label>
 
-                  <Label layoutX="32.0" layoutY="101.0" text="SPECT">
+                  <Label layoutX="25.0" layoutY="81.0" text="SP.">
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Label fx:id="nav_userSpect" layoutX="101.0" layoutY="101.0" text="FREDDY">
+                  <Label fx:id="nav_userSpect" layoutX="72.0" layoutY="81.0" text="NEUROLOGUE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font></Label>
 
                   <Label layoutX="55.0" layoutY="167.0" text="LISTE MENU" />
@@ -91,7 +85,7 @@
             <AnchorPane BorderPane.alignment="CENTER">
 
                <!-- 🔥 TON CONTENU EXISTANT -->
-               <AnchorPane fx:id="centre_ia" layoutY="1.0" prefHeight="603.0" prefWidth="1035.0" style="-fx-background-color: white;">
+               <AnchorPane fx:id="centre_ia" layoutY="1.0" prefHeight="603.0" prefWidth="1035.0" visible="false">
 
                   <children>
 
@@ -128,7 +122,77 @@
                      </TableView>
                   </children>
                </AnchorPane>
-               <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <AnchorPane layoutX="21.0" layoutY="36.0" prefHeight="534.0" prefWidth="263.0" styleClass="shadow-box">
+                        <children>
+                           <Circle layoutX="132.0" layoutY="88.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />
+                           <Button layoutX="69.0" layoutY="180.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" text="IMPORTER UNE PHOTO">
+                              <font>
+                                 <Font size="10.0" />
+                              </font>
+                           </Button>
+                           <Label layoutX="45.0" layoutY="259.0" text="NOM:" />
+                           <Label layoutX="100.0" layoutY="258.0" prefHeight="17.0" prefWidth="101.0" text="LUKADI" />
+                           <Label layoutX="46.0" layoutY="283.0" text="MAIL:" />
+                           <Label layoutX="100.0" layoutY="283.0" prefHeight="17.0" prefWidth="101.0" text="lukadi@" />
+                           <Label layoutX="45.0" layoutY="311.0" text="NOM:" />
+                           <Label layoutX="100.0" layoutY="311.0" prefHeight="17.0" prefWidth="101.0" text="LUKADI" />
+                           <Label layoutX="41.0" layoutY="337.0" text="DATE CREAT: " />
+                           <Label layoutX="125.0" layoutY="337.0" prefHeight="17.0" prefWidth="76.0" text="11//20" />
+                        </children></AnchorPane>
+                     <AnchorPane layoutX="434.0" layoutY="28.0" prefHeight="541.0" prefWidth="585.0" styleClass="shadow-box">
+                        <children>
+                           <Label layoutX="229.0" layoutY="14.0" text="MODIFIER PROFIL">
+                              <font>
+                                 <Font name="Calibri Bold" size="18.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="128.0" layoutY="118.0" text="Nom">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <TextField layoutX="250.0" layoutY="114.0" prefHeight="0.0" prefWidth="206.0" />
+                           <Label layoutX="131.0" layoutY="175.0" prefHeight="27.0" prefWidth="42.0" text="Mail">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <TextField layoutX="250.0" layoutY="171.0" prefHeight="0.0" prefWidth="206.0" />
+                           <Label layoutX="128.0" layoutY="300.0" text="Sexe">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <ComboBox layoutX="250.0" layoutY="301.0" prefHeight="25.0" prefWidth="206.0" promptText="Sexe" />
+                           <Label layoutX="130.0" layoutY="235.0" text="N_Tel">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <TextField layoutX="250.0" layoutY="235.0" prefHeight="0.0" prefWidth="206.0" />
+                           <Label layoutX="128.0" layoutY="360.0" text="Dom. Adresse">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <TextField layoutX="250.0" layoutY="356.0" prefHeight="0.0" prefWidth="206.0" />
+                           <Label layoutX="131.0" layoutY="411.0" text="Specialisation">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <ComboBox layoutX="253.0" layoutY="412.0" prefHeight="25.0" prefWidth="206.0" promptText="Specialisation" />
+                           <Label layoutX="131.0" layoutY="461.0" text="Status">
+                              <font>
+                                 <Font size="18.0" />
+                              </font>
+                           </Label>
+                           <ComboBox layoutX="253.0" layoutY="462.0" prefHeight="25.0" prefWidth="206.0" promptText="Status" />
+                        </children>
+                     </AnchorPane>
+                  </children></AnchorPane>
 
             </AnchorPane>
          </center>
