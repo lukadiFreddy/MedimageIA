@@ -148,48 +148,49 @@
                                  <Font name="Calibri Bold" size="18.0" />
                               </font>
                            </Label>
-                           <Label layoutX="128.0" layoutY="118.0" text="Nom">
+                           <Label layoutX="125.0" layoutY="74.0" text="Nom">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField layoutX="250.0" layoutY="114.0" prefHeight="0.0" prefWidth="206.0" />
-                           <Label layoutX="131.0" layoutY="175.0" prefHeight="27.0" prefWidth="42.0" text="Mail">
+                           <TextField layoutX="249.0" layoutY="70.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
+                           <Label layoutX="126.0" layoutY="131.0" prefHeight="27.0" prefWidth="42.0" text="Mail">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField layoutX="250.0" layoutY="171.0" prefHeight="0.0" prefWidth="206.0" />
-                           <Label layoutX="128.0" layoutY="300.0" text="Sexe">
+                           <TextField layoutX="249.0" layoutY="127.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
+                           <Label layoutX="127.0" layoutY="256.0" text="Sexe">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <ComboBox layoutX="250.0" layoutY="301.0" prefHeight="25.0" prefWidth="206.0" promptText="Sexe" />
-                           <Label layoutX="130.0" layoutY="235.0" text="N_Tel">
+                           <ComboBox layoutX="249.0" layoutY="257.0" prefHeight="25.0" prefWidth="206.0" promptText="Sexe" />
+                           <Label layoutX="125.0" layoutY="191.0" text="N_Tel">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField layoutX="250.0" layoutY="235.0" prefHeight="0.0" prefWidth="206.0" />
-                           <Label layoutX="128.0" layoutY="360.0" text="Dom. Adresse">
+                           <TextField layoutX="249.0" layoutY="191.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
+                           <Label layoutX="127.0" layoutY="316.0" text="Dom. Adresse">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField layoutX="250.0" layoutY="356.0" prefHeight="0.0" prefWidth="206.0" />
-                           <Label layoutX="131.0" layoutY="411.0" text="Specialisation">
+                           <TextField layoutX="249.0" layoutY="312.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
+                           <Label layoutX="130.0" layoutY="367.0" text="Specialisation">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <ComboBox layoutX="253.0" layoutY="412.0" prefHeight="25.0" prefWidth="206.0" promptText="Specialisation" />
-                           <Label layoutX="131.0" layoutY="461.0" text="Status">
+                           <ComboBox layoutX="252.0" layoutY="368.0" prefHeight="25.0" prefWidth="206.0" promptText="Specialisation" />
+                           <Label layoutX="130.0" layoutY="417.0" text="Status">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <ComboBox layoutX="253.0" layoutY="462.0" prefHeight="25.0" prefWidth="206.0" promptText="Status" />
+                           <ComboBox layoutX="252.0" layoutY="418.0" prefHeight="25.0" prefWidth="206.0" promptText="Status" />
+                           <Button layoutX="246.0" layoutY="494.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" styleClass="btn-scan" text="Modifier" />
                         </children>
                      </AnchorPane>
                   </children></AnchorPane>
