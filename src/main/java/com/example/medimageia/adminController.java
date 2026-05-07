@@ -1,16 +1,21 @@
 package com.example.medimageia;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class adminController implements Initializable {
@@ -42,13 +47,26 @@ public class adminController implements Initializable {
     // PROFIL
     @FXML private AnchorPane centre_profil;
     @FXML private Button profile_btn;
-
+    @FXML private Circle profil_image;
+    @FXML private Button profil_importBtn;
+    @FXML private Label profil_name;
+    @FXML private Label profil_mail;
+    @FXML private Label profil_num;
+    @FXML private Label profil_date;
+    @FXML private TextField profil_nomM;
+    @FXML private TextField profil_mailM;
+    @FXML private TextField profil_numM;
+    @FXML private TextField profil_dom;
+    @FXML private ComboBox profil_sexe;
+    @FXML private ComboBox profil_specialisation;
+    @FXML private ComboBox<String> profil_status;
+    @FXML private Button profil_updateBtn;
     // DB
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
 
-    // ================= AFFICHER NOM =================
+    // Cette fonction aide pour afficher le nom
     public void displayAdminUsername() {
 
         String sql = "SELECT user_name FROM docteur WHERE user_name = ?";
@@ -84,7 +102,40 @@ public class adminController implements Initializable {
         }
     }
 
-    // ================= SWITCH VUES =================
+    // La specialisation du docteur
+    public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
+    public void profileSpecialList(){
+        List<String> lists = new ArrayList<>();
+        for(String date : specialisation){
+            lists.add(date);
+        }
+        ObservableList listData = FXCollections.observableList(lists);
+        profil_specialisation.setItems(listData);
+    }
+
+    // La Status du docteur
+    public String[] status = {"Actif", "Inactif", "Suspendu"};
+    public void profileStatusList(){
+        List<String> listST = new ArrayList<>();
+        for(String date : status){
+            listST.add(date);
+        }
+        ObservableList listData = FXCollections.observableList(listST);
+        profil_status.setItems(listData);
+    }
+
+    // La Sexe du docteur
+    public String[] sexe = {"Homme", "Femme", "Non Binaire"};
+    public void profileSexeList(){
+        List<String> listSE = new ArrayList<>();
+        for(String date : sexe){
+            listSE.add(date);
+        }
+        ObservableList listData = FXCollections.observableList(listSE);
+        profil_sexe.setItems(listData);
+    }
+
+    // Ici c'est pour
     public void switchForm(ActionEvent event) {
 
         centre_ia.setVisible(false);
@@ -100,7 +151,7 @@ public class adminController implements Initializable {
         }
     }
 
-    // ================= TIME =================
+    // Je gere la date et affiche le temps reel
     public void runTime() {
         Thread thread = new Thread(() -> {
             SimpleDateFormat format = new SimpleDateFormat("EEEE dd MMMM yyyy HH:mm:ss");
@@ -126,5 +177,8 @@ public class adminController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         runTime();
         displayAdminUsername();
+        profileSpecialList();
+        profileStatusList();
+        profileSexeList();
     }
 }
