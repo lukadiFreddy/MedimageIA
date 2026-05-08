@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
-
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -49,7 +48,7 @@ public class adminController implements Initializable {
     @FXML private Button profile_btn;
     @FXML private Circle profil_image;
     @FXML private Button profil_importBtn;
-    @FXML private Label profil_name;
+    @FXML private Label profil_nom;
     @FXML private Label profil_mail;
     @FXML private Label profil_num;
     @FXML private Label profil_date;
@@ -57,8 +56,8 @@ public class adminController implements Initializable {
     @FXML private TextField profil_mailM;
     @FXML private TextField profil_numM;
     @FXML private TextField profil_dom;
-    @FXML private ComboBox profil_sexe;
-    @FXML private ComboBox profil_specialisation;
+    @FXML private ComboBox<String> profil_sexe;
+    @FXML private ComboBox<String> profil_specialisation;
     @FXML private ComboBox<String> profil_status;
     @FXML private Button profil_updateBtn;
     // DB
@@ -102,6 +101,30 @@ public class adminController implements Initializable {
         }
     }
 
+    public void profilFields(){
+        String selectData = "SELECT * FROM docteur WHERE user_name = '" + Data.admin_username + "'";
+
+        connect = DataBase.connectDB();
+
+        try{
+
+            prepare = connect.prepareStatement(selectData);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+
+                profil_nomM.setText(result.getString("user_name"));
+                profil_mailM.setText(result.getString("user_email"));
+                profil_sexe.getSelectionModel().select(result.getString("user_sexe"));
+                profil_numM.setText(result.getString("user_password"));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     // La specialisation du docteur
     public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
     public void profileSpecialList(){
@@ -133,6 +156,27 @@ public class adminController implements Initializable {
         }
         ObservableList listData = FXCollections.observableList(listSE);
         profil_sexe.setItems(listData);
+    }
+
+    public void profileLabel(){
+        String selectData = "SELECT * FROM docteur WHERE user_name = '" + Data.admin_username + "'";
+        connect = DataBase.connectDB();
+
+        try{
+
+            prepare = connect.prepareStatement(selectData);
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                profil_nom.setText(result.getString("user_name"));
+                profil_mail.setText(result.getString("user_email"));
+                profil_num.setText(result.getString("user_password"));
+                profil_date.setText(result.getString("created_at"));
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     // Ici c'est pour
@@ -180,5 +224,7 @@ public class adminController implements Initializable {
         profileSpecialList();
         profileStatusList();
         profileSexeList();
+        profilFields();
+        profileLabel();
     }
 }

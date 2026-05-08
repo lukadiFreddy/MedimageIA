@@ -124,10 +124,10 @@
                </AnchorPane>
                <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
-                     <AnchorPane layoutX="64.0" layoutY="28.0" prefHeight="550.0" prefWidth="270.0" styleClass="shadow-box">
+                     <AnchorPane layoutX="65.0" layoutY="28.0" prefHeight="550.0" prefWidth="346.0" styleClass="shadow-box">
                         <children>
-                           <Circle fx:id="profil_image" layoutX="130.0" layoutY="95.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />
-                           <Button fx:id="profil_importBtn" layoutX="69.0" layoutY="189.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" styleClass="btn-scan" text="IMPORTER UNE PHOTO">
+                           <Circle fx:id="profil_image" layoutX="173.0" layoutY="98.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />
+                           <Button fx:id="profil_importBtn" layoutX="110.0" layoutY="194.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" styleClass="btn-scan" text="IMPORTER UNE PHOTO">
                               <font>
                                  <Font size="10.0" />
                               </font>
@@ -136,85 +136,79 @@
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label fx:id="profil_nom" alignment="CENTER" layoutX="130.0" layoutY="282.0" prefHeight="42.0" prefWidth="121.0" styleClass="border-top" text="LUKADI">
+                           <Label fx:id="profil_nom" alignment="CENTER" layoutX="174.0" layoutY="282.0" prefHeight="42.0" prefWidth="153.0" styleClass="border-top" text="LUKADI">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label alignment="CENTER" layoutX="15.0" layoutY="323.0" prefHeight="34.0" prefWidth="110.0" styleClass="border-top" text="ADRESSE MAIL">
+                           <Label alignment="CENTER" layoutX="15.0" layoutY="339.0" prefHeight="34.0" prefWidth="110.0" styleClass="border-top" text="ADRESSE MAIL">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label fx:id="profil_mail" alignment="CENTER" layoutX="130.0" layoutY="323.0" prefHeight="33.0" prefWidth="121.0" styleClass="border-top" text="lukadi@">
+                           <Label fx:id="profil_mail" layoutX="174.0" layoutY="339.0" prefHeight="33.0" prefWidth="153.0" styleClass="border-top" text="\@">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label alignment="CENTER" layoutX="15.0" layoutY="357.0" prefHeight="36.0" prefWidth="107.0" styleClass="border-top" text="TELEPHONE">
+                           <Label alignment="CENTER" layoutX="16.0" layoutY="393.0" prefHeight="36.0" prefWidth="107.0" styleClass="border-top" text="TELEPHONE">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label fx:id="profil_num" alignment="CENTER" layoutX="131.0" layoutY="357.0" prefHeight="36.0" prefWidth="120.0" styleClass="border-top" text="LUKADI">
+                           <Label fx:id="profil_num" alignment="CENTER" layoutX="175.0" layoutY="393.0" prefHeight="36.0" prefWidth="151.0" styleClass="border-top" text="LUKADI">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label alignment="CENTER" layoutX="14.0" layoutY="394.0" prefHeight="37.0" prefWidth="108.0" styleClass="border-top" text="CREATION ">
+                           <Label alignment="CENTER" layoutX="15.0" layoutY="452.0" prefHeight="37.0" prefWidth="108.0" styleClass="border-top" text="CREATION ">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
-                           <Label fx:id="profil_date" alignment="CENTER" layoutX="132.0" layoutY="393.0" prefHeight="40.0" prefWidth="118.0" styleClass="border-top" text="11//20">
+                           <Label fx:id="profil_date" alignment="CENTER" layoutX="176.0" layoutY="451.0" prefHeight="40.0" prefWidth="147.0" styleClass="border-top" text="11//20">
                               <font>
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
                         </children></AnchorPane>
                      <AnchorPane layoutX="434.0" layoutY="28.0" prefHeight="550.0" prefWidth="590.0" styleClass="shadow-box">
                         <children>
-                           <Label layoutX="229.0" layoutY="14.0" text="MODIFIER PROFIL">
+                           <Label layoutX="229.0" layoutY="24.0" text="MODIFIER PROFIL">
                               <font>
                                  <Font name="Calibri Bold" size="18.0" />
                               </font>
                            </Label>
-                           <Label layoutX="125.0" layoutY="74.0" text="Nom">
+                           <Label layoutX="148.0" layoutY="96.0" text="Nom">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="profil_nomM" layoutX="249.0" layoutY="70.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
-                           <Label layoutX="126.0" layoutY="131.0" prefHeight="27.0" prefWidth="42.0" text="Mail">
+                           <TextField fx:id="profil_nomM" layoutX="297.0" layoutY="90.0" prefHeight="40.0" prefWidth="250.0" styleClass="border-top" />
+                           <Label layoutX="114.0" layoutY="166.0" prefHeight="27.0" prefWidth="108.0" text="Adresse mail">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="profil_mailM" layoutX="249.0" layoutY="127.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
-                           <Label layoutX="127.0" layoutY="256.0" text="Sexe">
+                           <TextField fx:id="profil_mailM" layoutX="298.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" styleClass="border-top" />
+                           <Label layoutX="150.0" layoutY="301.0" text="Sexe">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <ComboBox fx:id="profil_sexe" layoutX="249.0" layoutY="257.0" prefHeight="25.0" prefWidth="206.0" promptText="Sexe" />
-                           <Label layoutX="125.0" layoutY="191.0" text="N_Tel">
+                           <ComboBox fx:id="profil_sexe" layoutX="297.0" layoutY="295.0" prefHeight="40.0" prefWidth="250.0" promptText="Sexe" />
+                           <Label layoutX="113.0" layoutY="237.0" text="Mot de passe">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="profil_numM" layoutX="249.0" layoutY="191.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
-                           <Label layoutX="127.0" layoutY="316.0" text="Dom. Adresse">
+                           <TextField fx:id="profil_numM" layoutX="299.0" layoutY="231.0" prefHeight="40.0" prefWidth="250.0" styleClass="border-top" />
+                           <Label layoutX="113.0" layoutY="363.0" text="Specialisation">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="profil_dom" layoutX="249.0" layoutY="312.0" prefHeight="0.0" prefWidth="206.0" styleClass="border-top" />
-                           <Label layoutX="130.0" layoutY="367.0" text="Specialisation">
+                           <ComboBox fx:id="profil_specialisation" layoutX="298.0" layoutY="357.0" prefHeight="40.0" prefWidth="250.0" promptText="Specialisation" />
+                           <Label layoutX="144.0" layoutY="426.0" text="Status">
                               <font>
                                  <Font size="18.0" />
                               </font>
                            </Label>
-                           <ComboBox fx:id="profil_specialisation" layoutX="252.0" layoutY="368.0" prefHeight="25.0" prefWidth="206.0" promptText="Specialisation" />
-                           <Label layoutX="130.0" layoutY="417.0" text="Status">
-                              <font>
-                                 <Font size="18.0" />
-                              </font>
-                           </Label>
-                           <ComboBox fx:id="profil_status" layoutX="252.0" layoutY="418.0" prefHeight="25.0" prefWidth="206.0" promptText="Status" />
-                           <Button fx:id="profil_updateBtn" layoutX="246.0" layoutY="494.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" styleClass="btn-scan" text="Modifier" />
+                           <ComboBox fx:id="profil_status" layoutX="299.0" layoutY="420.0" prefHeight="40.0" prefWidth="250.0" promptText="Status" />
+                           <Button fx:id="profil_updateBtn" layoutX="244.0" layoutY="502.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" styleClass="btn-scan" text="Modifier" />
                         </children>
                      </AnchorPane>
                   </children></AnchorPane>
