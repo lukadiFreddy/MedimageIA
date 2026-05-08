@@ -4,6 +4,7 @@ module com.example.medimageia {
     requires java.sql;
     requires java.xml.crypto;
     requires java.management;
+    requires java.desktop;
 
 
     opens com.example.medimageia to javafx.fxml;

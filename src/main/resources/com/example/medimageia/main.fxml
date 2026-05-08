@@ -124,10 +124,10 @@
                </AnchorPane>
                <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
-                     <AnchorPane layoutX="65.0" layoutY="28.0" prefHeight="550.0" prefWidth="346.0" styleClass="shadow-box">
+                     <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="550.0" prefWidth="346.0" styleClass="shadow-box" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="28.0">
                         <children>
                            <Circle fx:id="profil_image" layoutX="173.0" layoutY="98.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />
-                           <Button fx:id="profil_importBtn" layoutX="110.0" layoutY="194.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" styleClass="btn-scan" text="IMPORTER UNE PHOTO">
+                           <Button fx:id="profil_importBtn" layoutX="110.0" layoutY="194.0" mnemonicParsing="false" onAction="#profileChange" prefHeight="36.0" prefWidth="125.0" styleClass="btn-scan" text="IMPORTER UNE PHOTO">
                               <font>
                                  <Font size="10.0" />
                               </font>
@@ -165,7 +165,7 @@
                                  <Font name="Calibri Bold" size="14.0" />
                               </font></Label>
                         </children></AnchorPane>
-                     <AnchorPane layoutX="434.0" layoutY="28.0" prefHeight="550.0" prefWidth="590.0" styleClass="shadow-box">
+                     <AnchorPane layoutX="404.0" layoutY="28.0" prefHeight="550.0" prefWidth="590.0" styleClass="shadow-box" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="28.0">
                         <children>
                            <Label layoutX="229.0" layoutY="24.0" text="MODIFIER PROFIL">
                               <font>

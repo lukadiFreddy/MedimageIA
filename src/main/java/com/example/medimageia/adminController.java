@@ -7,9 +7,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
+
+import java.awt.*;
+import java.io.File;
 import java.net.URL;
+import java.security.cert.Extension;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,6 +74,7 @@ public class adminController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
+    private Image image;
 
     // Cette fonction aide pour afficher le nom
     public void displayAdminUsername() {
@@ -157,6 +168,21 @@ public class adminController implements Initializable {
         ObservableList listData = FXCollections.observableList(listSE);
         profil_sexe.setItems(listData);
     }
+
+    public void profileChange(){
+        FileChooser open = new FileChooser();
+        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("open Image", "png", "jpg", "jpeg"));
+
+        File file = open.showOpenDialog(profil_importBtn.getScene().getWindow());
+
+        if (file != null) {
+            Data.path = file.getAbsolutePath();
+            
+            image = new Image(file.toURI().toString(), 173, 98, false, true);
+            profil_image.setFill(new ImagePattern(image));
+        }
+    }
+
 
     public void profileLabel(){
         String selectData = "SELECT * FROM docteur WHERE user_name = '" + Data.admin_username + "'";
