@@ -72,6 +72,7 @@ public class adminController implements Initializable {
     @FXML private ComboBox<String> profil_specialisation;
     @FXML private ComboBox<String> profil_status;
     @FXML private Button profil_updateBtn;
+    @FXML private Label nav_userSpect;
     // DB
     private Connection connect;
     private PreparedStatement prepare;
@@ -96,7 +97,6 @@ public class adminController implements Initializable {
 
                 if (username != null && !username.isEmpty()) {
                     String formatted = username.toUpperCase();
-
                     top_userName.setText(formatted);
                     nav_userName.setText(formatted);
                 }
@@ -164,7 +164,7 @@ public class adminController implements Initializable {
     }
 
     // La Sexe du docteur
-    public String[] sexe = {"Homme", "Femme", "Non Binaire"};
+    public String[] sexe = {"M", "F", "AUTRE"};
 
     public void profileSexeList(){
         List<String> listSE = new ArrayList<>();
@@ -238,16 +238,22 @@ public class adminController implements Initializable {
         }
     }
 
-    public void profileChange(){
+    public void profileChange() {
         FileChooser open = new FileChooser();
-        open.getExtensionFilters().add(new FileChooser.ExtensionFilter("open Image", "png", "jpg", "jpeg"));
+
+        open.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter(
+                        "Image Files",
+                        "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.webp"
+                )
+        );
 
         File file = open.showOpenDialog(profil_importBtn.getScene().getWindow());
 
         if (file != null) {
             Data.path = file.getAbsolutePath();
 
-            image = new Image(file.toURI().toString(), 173, 98, false, true);
+            Image image = new Image(file.toURI().toString(), 173, 98, false, true);
             profil_image.setFill(new ImagePattern(image));
         }
     }

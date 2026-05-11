@@ -122,7 +122,7 @@
                      </TableView>
                   </children>
                </AnchorPane>
-               <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <AnchorPane fx:id="centre_profil" visible="false" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="550.0" prefWidth="346.0" styleClass="shadow-box" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="28.0">
                         <children>
@@ -208,7 +208,7 @@
                               </font>
                            </Label>
                            <ComboBox fx:id="profil_status" layoutX="299.0" layoutY="420.0" prefHeight="40.0" prefWidth="250.0" promptText="Status" />
-                           <Button fx:id="profil_updateBtn" layoutX="244.0" layoutY="502.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="109.0" styleClass="btn-scan" text="Modifier" />
+                           <Button fx:id="profil_updateBtn" layoutX="244.0" layoutY="502.0" mnemonicParsing="false" onAction="#profileUpdateBtn" prefHeight="33.0" prefWidth="109.0" styleClass="btn-scan" text="Modifier" />
                         </children>
                      </AnchorPane>
                   </children></AnchorPane>
