@@ -1,5 +1,4 @@
 package com.example.medimageia;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,17 +14,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-
-import java.awt.*;
 import java.io.File;
 import java.net.URL;
-import java.security.cert.Extension;
+import java.nio.file.Path;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.lang.System.out;
 
 public class adminController implements Initializable {
 
@@ -64,7 +66,7 @@ public class adminController implements Initializable {
     @FXML private Label profil_date;
     @FXML private TextField profil_nomM;
     @FXML private TextField profil_mailM;
-    @FXML private TextField profil_numM;
+    @FXML private TextField profil_passM;
     @FXML private TextField profil_dom;
     @FXML private ComboBox<String> profil_sexe;
     @FXML private ComboBox<String> profil_specialisation;
@@ -75,6 +77,7 @@ public class adminController implements Initializable {
     private PreparedStatement prepare;
     private ResultSet result;
     private Image image;
+    private Alertmessage alert = new Alertmessage();
 
     // Cette fonction aide pour afficher le nom
     public void displayAdminUsername() {
@@ -127,7 +130,7 @@ public class adminController implements Initializable {
                 profil_nomM.setText(result.getString("user_name"));
                 profil_mailM.setText(result.getString("user_email"));
                 profil_sexe.getSelectionModel().select(result.getString("user_sexe"));
-                profil_numM.setText(result.getString("user_password"));
+                profil_passM.setText(result.getString("user_password"));
             }
 
         } catch (Exception e) {
@@ -138,6 +141,7 @@ public class adminController implements Initializable {
 
     // La specialisation du docteur
     public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
+
     public void profileSpecialList(){
         List<String> lists = new ArrayList<>();
         for(String date : specialisation){
@@ -149,6 +153,7 @@ public class adminController implements Initializable {
 
     // La Status du docteur
     public String[] status = {"Actif", "Inactif", "Suspendu"};
+
     public void profileStatusList(){
         List<String> listST = new ArrayList<>();
         for(String date : status){
@@ -160,6 +165,7 @@ public class adminController implements Initializable {
 
     // La Sexe du docteur
     public String[] sexe = {"Homme", "Femme", "Non Binaire"};
+
     public void profileSexeList(){
         List<String> listSE = new ArrayList<>();
         for(String date : sexe){
@@ -167,6 +173,69 @@ public class adminController implements Initializable {
         }
         ObservableList listData = FXCollections.observableList(listSE);
         profil_sexe.setItems(listData);
+    }
+
+    public void profileUpdateBtn() {
+
+        if (profil_nomM.getText().isEmpty()
+                || profil_mailM.getText().isEmpty()
+                || profil_passM.getText().isEmpty()
+                || profil_sexe.getSelectionModel().getSelectedItem() == null
+                || profil_specialisation.getSelectionModel().getSelectedItem() == null
+                || profil_status.getSelectionModel().getSelectedItem() == null) {
+
+            alert.errorMessage("Veuillez remplir tous les champs");
+            return;
+        }
+
+        String path = Data.path;
+
+        if (path == null || path.isEmpty()) {
+            path = "";
+        }
+
+        String updateData =
+                "UPDATE docteur SET " +
+                        "user_name = ?, " +
+                        "user_email = ?, " +
+                        "user_password = ?, " +
+                        "user_sexe = ?, " +
+                        "user_specialisation = ?, " +
+                        "user_status = ?, " +
+                        "user_image = ? " +
+                        "WHERE user_name = ?";
+
+        connect = DataBase.connectDB();
+
+        try {
+
+            prepare = connect.prepareStatement(updateData);
+
+            prepare.setString(1, profil_nomM.getText());
+            prepare.setString(2, profil_mailM.getText());
+            prepare.setString(3, profil_passM.getText());
+            prepare.setString(4, profil_sexe.getSelectionModel().getSelectedItem());
+            prepare.setString(5, profil_specialisation.getSelectionModel().getSelectedItem());
+            prepare.setString(6, profil_status.getSelectionModel().getSelectedItem());
+            prepare.setString(7, path);
+
+            // ancien username connecté
+            prepare.setString(8, Data.admin_username);
+
+            prepare.executeUpdate();
+
+            // mettre à jour username session
+            Data.admin_username = profil_nomM.getText();
+
+            alert.successMessage("Mise à jour réussie");
+
+            displayAdminUsername();
+            profileLabel();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            alert.errorMessage("Erreur lors de la mise à jour");
+        }
     }
 
     public void profileChange(){
@@ -177,12 +246,11 @@ public class adminController implements Initializable {
 
         if (file != null) {
             Data.path = file.getAbsolutePath();
-            
+
             image = new Image(file.toURI().toString(), 173, 98, false, true);
             profil_image.setFill(new ImagePattern(image));
         }
     }
-
 
     public void profileLabel(){
         String selectData = "SELECT * FROM docteur WHERE user_name = '" + Data.admin_username + "'";
@@ -221,7 +289,7 @@ public class adminController implements Initializable {
         }
     }
 
-    // Je gere la date et affiche le temps reel
+    // Je gère la date et affiche le temps reel
     public void runTime() {
         Thread thread = new Thread(() -> {
             SimpleDateFormat format = new SimpleDateFormat("EEEE dd MMMM yyyy HH:mm:ss");
