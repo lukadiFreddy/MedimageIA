@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import static java.lang.System.out;
 
 public class adminController implements Initializable {
@@ -74,6 +73,9 @@ public class adminController implements Initializable {
     @FXML private ComboBox<String> profil_status;
     @FXML private Button profil_updateBtn;
     @FXML private Label nav_userSpect;
+    @FXML private Label nbr;
+
+
     // DB
     private Connection connect;
     private PreparedStatement prepare;
@@ -428,6 +430,8 @@ public class adminController implements Initializable {
                 profil_date.setText(result.getString("created_at"));
             }
 
+            nbr.setText("ffggg");
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -471,6 +475,32 @@ public class adminController implements Initializable {
         thread.start();
     }
 
+    public void affichageTotalDr(){
+
+        String sql = "SELECT COUNT(*) AS total FROM docteur";
+
+        connect = DataBase.connectDB();
+
+        int getTp = 0;
+
+        try{
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            if(result.next()){
+
+                getTp = result.getInt("total");
+            }
+
+            nbr.setText(String.valueOf(getTp));
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+
     // La partei Ressource au demarrage de l'application JAVA
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -483,5 +513,6 @@ public class adminController implements Initializable {
         profileLabel();
         initSpecialisationListener();
         profileDisplayImage();
+        affichageTotalDr();
     }
 }

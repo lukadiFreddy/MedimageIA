@@ -105,14 +105,14 @@
                   </children>
 
                </AnchorPane>
-               <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0" visible="false">
+               <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0">
                   <children>
-                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="14.0" prefHeight="22.0" prefWidth="191.0" text="LISTE DES SCANNAGES">
+                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="44.0" prefHeight="22.0" prefWidth="191.0" text="LISTE DES SCANNAGES">
                         <font>
                            <Font name="Calibri Bold" size="18.0" />
                         </font>
                      </Label>
-                     <TableView fx:id="center_scanTabView" layoutX="30.0" layoutY="66.0" prefHeight="474.0" prefWidth="976.0" styleClass="clean-table" AnchorPane.bottomAnchor="65.33333333333337" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="66.0">
+                     <TableView fx:id="center_scanTabView" layoutX="37.0" layoutY="104.0" prefHeight="474.0" prefWidth="976.0" styleClass="clean-table" AnchorPane.bottomAnchor="27.33333333333337" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="104.0">
                         <columns>
                            <TableColumn fx:id="center_scanTabId" prefWidth="90.0" text="IDENTIFIANT" />
                            <TableColumn fx:id="center_scanTabNom" prefWidth="246.0" text="NOMS" />
@@ -121,6 +121,15 @@
                            <TableColumn fx:id="center_scanTabAction" maxWidth="416.66668701171875" minWidth="-1.0" prefWidth="212.0" text="ACTIONS" />
                         </columns>
                      </TableView>
+                     <Label layoutX="788.0" layoutY="14.0" text="NOMBRE DES DOCTEURS">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font></Label>
+                     <Label fx:id="nbr" alignment="CENTER" layoutX="943.0" layoutY="14.0" prefHeight="17.0" prefWidth="24.0" text="0">
+                        <font>
+                           <Font name="System Bold" size="12.0" />
+                        </font>
+                     </Label>
                   </children>
                </AnchorPane>
                <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
