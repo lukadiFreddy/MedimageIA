@@ -203,31 +203,40 @@ public class adminController implements Initializable {
 
                 String userImage = result.getString("user_image");
 
+                // Vérification importante
                 if (userImage != null && !userImage.isEmpty()) {
 
-                    String imagePath = new File(userImage).toURI().toString();
+                    File file = new File(userImage);
 
-                    // IMAGE HEADER
-                    Image topImage = new Image(
-                            imagePath,
-                            1088,
-                            23,
-                            false,
-                            true
-                    );
+                    // Vérifie si le fichier existe
+                    if (file.exists()) {
 
-                    top_profil.setFill(new ImagePattern(topImage));
+                        String imagePath = file.toURI().toString();
 
-                    // IMAGE PROFIL
-                    Image profileImage = new Image(
-                            imagePath,
-                            173,
-                            98,
-                            false,
-                            true
-                    );
+                        Image topImage = new Image(
+                                imagePath,
+                                1088,
+                                23,
+                                false,
+                                true
+                        );
 
-                    profil_image.setFill(new ImagePattern(profileImage));
+                        top_profil.setFill(new ImagePattern(topImage));
+
+                        Image profileImage = new Image(
+                                imagePath,
+                                173,
+                                98,
+                                false,
+                                true
+                        );
+
+                        profil_image.setFill(new ImagePattern(profileImage));
+
+                    } else {
+
+                        System.out.println("Image introuvable : " + userImage);
+                    }
                 }
             }
 
@@ -238,17 +247,9 @@ public class adminController implements Initializable {
 
             try {
 
-                if (result != null) {
-                    result.close();
-                }
-
-                if (prepare != null) {
-                    prepare.close();
-                }
-
-                if (connect != null) {
-                    connect.close();
-                }
+                if (result != null) result.close();
+                if (prepare != null) prepare.close();
+                if (connect != null) connect.close();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -270,26 +271,43 @@ public class adminController implements Initializable {
             return;
         }
 
-        String path = Data.path;
-
-        if (path == null || path.isEmpty()) {
-            path = "";
-        }
-
-        String updateData =
-                "UPDATE docteur SET " +
-                        "user_name = ?, " +
-                        "user_email = ?, " +
-                        "user_password = ?, " +
-                        "user_sexe = ?, " +
-                        "user_specialisation = ?, " +
-                        "user_status = ?, " +
-                        "user_image = ? " +
-                        "WHERE user_name = ?";
-
         connect = DataBase.connectDB();
 
         try {
+
+            // récupérer ancienne image si aucune nouvelle image choisie
+            String currentImage = "";
+
+            String getImage = "SELECT user_image FROM docteur WHERE user_name = ?";
+
+            prepare = connect.prepareStatement(getImage);
+            prepare.setString(1, Data.admin_username);
+
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+                currentImage = result.getString("user_image");
+            }
+
+            // si aucune nouvelle image
+            String finalPath;
+
+            if (Data.path == null || Data.path.isEmpty()) {
+                finalPath = currentImage;
+            } else {
+                finalPath = Data.path;
+            }
+
+            String updateData =
+                    "UPDATE docteur SET " +
+                            "user_name = ?, " +
+                            "user_email = ?, " +
+                            "user_password = ?, " +
+                            "user_sexe = ?, " +
+                            "user_specialisation = ?, " +
+                            "user_status = ?, " +
+                            "user_image = ? " +
+                            "WHERE user_name = ?";
 
             prepare = connect.prepareStatement(updateData);
 
@@ -299,20 +317,22 @@ public class adminController implements Initializable {
             prepare.setString(4, profil_sexe.getSelectionModel().getSelectedItem());
             prepare.setString(5, profil_specialisation.getSelectionModel().getSelectedItem());
             prepare.setString(6, profil_status.getSelectionModel().getSelectedItem());
-            prepare.setString(7, path);
+            prepare.setString(7, finalPath);
 
-            // ancien username connecté
             prepare.setString(8, Data.admin_username);
 
             prepare.executeUpdate();
 
-            // mettre à jour username session
+            // mise à jour session
             Data.admin_username = profil_nomM.getText();
 
             alert.successMessage("Mise à jour réussie");
 
+            Data.path = null;
+
             displayAdminUsername();
             profileLabel();
+            profileDisplayImage();
 
         } catch (Exception e) {
             e.printStackTrace();

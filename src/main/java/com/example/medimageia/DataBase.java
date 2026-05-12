@@ -5,22 +5,18 @@ import java.sql.DriverManager;
 
 public class DataBase {
 
-    private static final String URL =
-            "jdbc:mysql://localhost:3306/medimageia";
-
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
-
     public static Connection connectDB() {
 
-        Connection connect = null;
+        Connection conn = null;
 
         try {
 
-            connect = DriverManager.getConnection(
-                    URL,
-                    USER,
-                    PASSWORD
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/medimageia",
+                    "root",
+                    ""
             );
 
             System.out.println("Connexion réussie !");
@@ -31,6 +27,6 @@ public class DataBase {
             e.printStackTrace();
         }
 
-        return connect;
+        return conn;
     }
 }
