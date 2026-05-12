@@ -83,6 +83,7 @@ public class adminController implements Initializable {
     private Image image;
     private Alertmessage alert = new Alertmessage();
     // C'est dans ce controleur qu'on gere les action et methode de l'interface central
+
     //Une liste des informations relatifs a l'utilisateur non obligatoire dans la BD
     public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
     public String[] status = {"Actif", "Inactif", "Suspendu"};
@@ -475,6 +476,7 @@ public class adminController implements Initializable {
         thread.start();
     }
 
+    //
     public void affichageTotalDr(){
 
         String sql = "SELECT COUNT(*) AS total FROM docteur";
