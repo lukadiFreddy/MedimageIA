@@ -15,32 +15,33 @@
             <AnchorPane id="header" prefHeight="45.0" styleClass="header" stylesheets="@style.css">
 
                <children>
-                  <AnchorPane prefHeight="45.0" prefWidth="175.0" style="-fx-background-color: white;" styleClass="button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <AnchorPane prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: white;" styleClass="button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
 
-                  <Label fx:id="top_profile" text="ACTIVE" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="14.0" />
+                  <Label fx:id="top_profile" text="ACTIF" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="14.0" />
 
-                  <Circle fill="#46bc3e" layoutX="1191.0" layoutY="23.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="16.0" />
+                  <Circle fill="#46bc3e" layoutX="1181.0" layoutY="23.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="16.0" />
 
-                  <Label text="Bienvenue, Dr" AnchorPane.rightAnchor="338.0" AnchorPane.topAnchor="14.0" />
+                  <Label layoutX="772.0" layoutY="14.0" text="Bienvenue, Dr" AnchorPane.rightAnchor="374.66666666666663" AnchorPane.topAnchor="14.0" />
 
-                  <Label fx:id="top_userName" layoutX="881.0" layoutY="14.0" prefHeight="17.0" prefWidth="145.0" text="LUKADI" AnchorPane.rightAnchor="185.66666666666674" AnchorPane.topAnchor="14.0">
+                  <Label fx:id="top_userName" layoutX="845.0" layoutY="14.0" prefHeight="17.0" prefWidth="145.0" text=" LUKADI" AnchorPane.rightAnchor="229.66666666666663" AnchorPane.topAnchor="14.0">
                      <font>
-                        <Font name="Calibri Bold" size="14.0" />
+                        <Font name="Calibri Bold" size="16.0" />
                      </font></Label>
 
-                  <Label text="MEDIMAGE-IA" AnchorPane.leftAnchor="186.0" AnchorPane.topAnchor="12.0">
+                  <Label layoutX="194.0" layoutY="12.0" text="MEDIMAGE-IA" AnchorPane.leftAnchor="194.0" AnchorPane.topAnchor="12.0">
                      <font>
                         <Font name="Calibri Bold" size="16.0" />
                      </font>
                   </Label>
                   <Label fx:id="date_time" alignment="CENTER" layoutX="485.0" layoutY="12.0" prefHeight="17.0" prefWidth="197.0" text="MM//DD/YYYY" />
+                  <Circle fx:id="top_profil" layoutX="1089.0" layoutY="23.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
                </children>
             </AnchorPane>
          </top>
 
          <!-- SIDEBAR -->
          <left>
-            <AnchorPane id="navBar" prefWidth="176.0" styleClass="navBar" stylesheets="@style.css">
+            <AnchorPane id="navBar" prefHeight="606.0" prefWidth="184.0" styleClass="navBar" stylesheets="@style.css">
 
                <children>
                   <Label alignment="CENTER" layoutX="21.0" layoutY="7.0" prefWidth="133.0" text="IDENTIFIANT DR.">
@@ -122,12 +123,12 @@
                      </TableView>
                   </children>
                </AnchorPane>
-               <AnchorPane fx:id="centre_profil" visible="false" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <AnchorPane fx:id="centre_profil" layoutX="418.0" layoutY="140.0" prefHeight="606.0" prefWidth="1036.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <children>
                      <AnchorPane layoutX="14.0" layoutY="28.0" prefHeight="550.0" prefWidth="346.0" styleClass="shadow-box" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="28.0">
                         <children>
                            <Circle fx:id="profil_image" layoutX="173.0" layoutY="98.0" radius="74.0" stroke="BLACK" strokeType="INSIDE" />
-                           <Button fx:id="profil_importBtn" layoutX="110.0" layoutY="194.0" mnemonicParsing="false" onAction="#profileChange" prefHeight="36.0" prefWidth="125.0" styleClass="btn-scan" text="IMPORTER UNE PHOTO">
+                           <Button fx:id="profil_importBtn" layoutX="95.0" layoutY="198.0" mnemonicParsing="false" onAction="#profileChange" prefHeight="36.0" prefWidth="160.0" styleClass="btn-scan" text="IMPORTER UNE PHOTO">
                               <font>
                                  <Font size="10.0" />
                               </font>

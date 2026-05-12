@@ -59,6 +59,7 @@ public class adminController implements Initializable {
     @FXML private AnchorPane centre_profil;
     @FXML private Button profile_btn;
     @FXML private Circle profil_image;
+    @FXML private Circle top_profil;
     @FXML private Button profil_importBtn;
     @FXML private Label profil_nom;
     @FXML private Label profil_mail;
@@ -79,8 +80,14 @@ public class adminController implements Initializable {
     private ResultSet result;
     private Image image;
     private Alertmessage alert = new Alertmessage();
+    // C'est dans ce controleur qu'on gere les action et methode de l'interface central
+    //Une liste des informations relatifs a l'utilisateur non obligatoire dans la BD
+    public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
+    public String[] status = {"Actif", "Inactif", "Suspendu"};
+    public String[] sexe = {"M", "F", "AUTRE"};
 
-    // Cette fonction aide pour afficher le nom
+    // Cette partie sert a afficher le nom de l'utilisateur recuperer depuis
+    // La base de donnees sur l'interface
     public void displayAdminUsername() {
 
         String sql = "SELECT user_name FROM docteur WHERE user_name = ?";
@@ -115,6 +122,7 @@ public class adminController implements Initializable {
         }
     }
 
+    //Cette methode sert a afficher les differentens informations de l'utilisateur sur la partie MODIFIER
     public void profilFields(){
         String selectData = "SELECT * FROM docteur WHERE user_name = '" + Data.admin_username + "'";
 
@@ -139,21 +147,24 @@ public class adminController implements Initializable {
 
     }
 
-    // La specialisation du docteur
-    public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
+    // La liste des specialisation d'un Dr par Selection
+    public void profileSpecialList() {
+        ObservableList<String> listData =
+                FXCollections.observableArrayList(specialisation);
 
-    public void profileSpecialList(){
-        List<String> lists = new ArrayList<>();
-        for(String date : specialisation){
-            lists.add(date);
-        }
-        ObservableList listData = FXCollections.observableList(lists);
         profil_specialisation.setItems(listData);
     }
 
-    // La Status du docteur
-    public String[] status = {"Actif", "Inactif", "Suspendu"};
+    // L'affichage en temps reel des specialisation d'un Dr
+    public void initSpecialisationListener() {
+        profil_specialisation.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null) {
+                nav_userSpect.setText(newVal);
+            }
+        });
+    }
 
+    // La liste du status d'un Dr par Selection
     public void profileStatusList(){
         List<String> listST = new ArrayList<>();
         for(String date : status){
@@ -163,9 +174,7 @@ public class adminController implements Initializable {
         profil_status.setItems(listData);
     }
 
-    // La Sexe du docteur
-    public String[] sexe = {"M", "F", "AUTRE"};
-
+    // La liste du sexe d'un Dr par Selection
     public void profileSexeList(){
         List<String> listSE = new ArrayList<>();
         for(String date : sexe){
@@ -175,6 +184,79 @@ public class adminController implements Initializable {
         profil_sexe.setItems(listData);
     }
 
+    // Cette Methode sert a importer la photo de profil dans la partie Setting
+    public void profileDisplayImage() {
+
+        String selectData =
+                "SELECT * FROM docteur WHERE user_name = ?";
+
+        connect = DataBase.connectDB();
+
+        try {
+
+            prepare = connect.prepareStatement(selectData);
+            prepare.setString(1, Data.admin_username);
+
+            result = prepare.executeQuery();
+
+            if (result.next()) {
+
+                String userImage = result.getString("user_image");
+
+                if (userImage != null && !userImage.isEmpty()) {
+
+                    String imagePath = new File(userImage).toURI().toString();
+
+                    // IMAGE HEADER
+                    Image topImage = new Image(
+                            imagePath,
+                            1088,
+                            23,
+                            false,
+                            true
+                    );
+
+                    top_profil.setFill(new ImagePattern(topImage));
+
+                    // IMAGE PROFIL
+                    Image profileImage = new Image(
+                            imagePath,
+                            173,
+                            98,
+                            false,
+                            true
+                    );
+
+                    profil_image.setFill(new ImagePattern(profileImage));
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+
+            try {
+
+                if (result != null) {
+                    result.close();
+                }
+
+                if (prepare != null) {
+                    prepare.close();
+                }
+
+                if (connect != null) {
+                    connect.close();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Cette section permet de modifier les informations relatifs a l'utilisateur dans la BD
     public void profileUpdateBtn() {
 
         if (profil_nomM.getText().isEmpty()
@@ -238,26 +320,78 @@ public class adminController implements Initializable {
         }
     }
 
+    // Cette Methode sert a importer la photo de profil dans les deux cercles dedier
     public void profileChange() {
+
         FileChooser open = new FileChooser();
 
         open.getExtensionFilters().add(
                 new FileChooser.ExtensionFilter(
                         "Image Files",
-                        "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.webp"
+                        "*.png",
+                        "*.jpg",
+                        "*.jpeg",
+                        "*.gif",
+                        "*.bmp",
+                        "*.webp"
                 )
         );
 
         File file = open.showOpenDialog(profil_importBtn.getScene().getWindow());
 
         if (file != null) {
-            Data.path = file.getAbsolutePath();
 
-            Image image = new Image(file.toURI().toString(), 173, 98, false, true);
-            profil_image.setFill(new ImagePattern(image));
+            try {
+
+                // dossier destination
+                String folder = "profile_images/";
+
+                File directory = new File(folder);
+
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
+
+                // nom unique image
+                String fileName = System.currentTimeMillis()
+                        + "_"
+                        + file.getName();
+
+                // destination finale
+                Path destination = Paths.get(folder + fileName);
+
+                // copie image
+                Files.copy(
+                        file.toPath(),
+                        destination,
+                        StandardCopyOption.REPLACE_EXISTING
+                );
+
+                // chemin sauvegardé DB
+                Data.path = destination.toString();
+
+                // affichage image
+                String imagePath =
+                        destination.toFile().toURI().toString();
+
+                Image image = new Image(
+                        imagePath,
+                        173,
+                        98,
+                        false,
+                        true
+                );
+
+                profil_image.setFill(new ImagePattern(image));
+                top_profil.setFill(new ImagePattern(image));
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
+    // Cette partie sert a afficher le nom d'utilisateur dans la section navBar
     public void profileLabel(){
         String selectData = "SELECT * FROM docteur WHERE user_name = '" + Data.admin_username + "'";
         connect = DataBase.connectDB();
@@ -279,7 +413,7 @@ public class adminController implements Initializable {
         }
     }
 
-    // Ici c'est pour
+    // La Methode permet de changer d'un module a un autre
     public void switchForm(ActionEvent event) {
 
         centre_ia.setVisible(false);
@@ -295,7 +429,7 @@ public class adminController implements Initializable {
         }
     }
 
-    // Je gère la date et affiche le temps reel
+    // la creation de l'horloge en temps reel
     public void runTime() {
         Thread thread = new Thread(() -> {
             SimpleDateFormat format = new SimpleDateFormat("EEEE dd MMMM yyyy HH:mm:ss");
@@ -317,6 +451,7 @@ public class adminController implements Initializable {
         thread.start();
     }
 
+    // La partei Ressource au demarrage de l'application JAVA
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         runTime();
@@ -326,5 +461,7 @@ public class adminController implements Initializable {
         profileSexeList();
         profilFields();
         profileLabel();
+        initSpecialisationListener();
+        profileDisplayImage();
     }
 }

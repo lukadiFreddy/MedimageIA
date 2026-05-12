@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3ecc37d-2c16-459e-9d09-3e76b0091c32" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/medimageia/Alertmessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/medimageia/Alertmessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/medimageia/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/medimageia/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/medimageia/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/medimageia/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/medimageia/adminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/medimageia/adminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/medimageia/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/medimageia/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
