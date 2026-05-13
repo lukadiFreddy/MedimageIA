@@ -27,6 +27,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import static java.lang.System.out;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class adminController implements Initializable {
 
@@ -46,12 +49,14 @@ public class adminController implements Initializable {
 
     // CENTRE SCAN
     @FXML private AnchorPane center_scan;
-    @FXML private TableView<?> center_scanTabView;
-    @FXML private TableColumn<?, ?> center_scanTabId;
-    @FXML private TableColumn<?, ?> center_scanTabNom;
-    @FXML private TableColumn<?, ?> center_scanTabImage;
-    @FXML private TableColumn<?, ?> center_scanTabDiagnostic;
-    @FXML private TableColumn<?, ?> center_scanTabAction;
+    @FXML private TableView<DoctorData> center_scanTabView;
+    @FXML private TableColumn<DoctorData, Integer> center_scanTabIdDo;
+    @FXML private TableColumn<DoctorData, String>  center_scanTabNomD;
+    @FXML private TableColumn<DoctorData, String>  center_scanTabMail;
+    @FXML private TableColumn<DoctorData, String>  center_scanTabPass;
+    @FXML private TableColumn<DoctorData, String>  center_scanTabSpec;
+    @FXML private TableColumn<DoctorData, String>  center_scanTabSexe;
+    @FXML private TableColumn<DoctorData, String>  center_scanTabStat;
     @FXML private Button listScan_btn;
 
     // PROFIL
@@ -88,6 +93,72 @@ public class adminController implements Initializable {
     public String[] specialisation = {"Neurologie", "Neurochirurgie", "Psychiatrie", "Neuro-oncologie", "Neuropsychologie"};
     public String[] status = {"Actif", "Inactif", "Suspendu"};
     public String[] sexe = {"M", "F", "AUTRE"};
+
+    // La liste des donnees de la table docteur
+    private ObservableList<DoctorData> doctorListData
+            = FXCollections.observableArrayList();
+
+    // Ca c'est la methode qui s'occupe de recuperer les donnees de chaque colonne
+    // de la table docteur
+    public void displayDoctors() {
+
+        String sql = "SELECT * FROM docteur";
+
+        connect = DataBase.connectDB();
+
+        doctorListData.clear();
+
+        try {
+
+            prepare = connect.prepareStatement(sql);
+            result = prepare.executeQuery();
+
+            while (result.next()) {
+
+                DoctorData doctorData = new DoctorData(
+
+                        result.getInt("id_docteur"),
+                        result.getString("user_name"),
+                        result.getString("user_email"),
+                        result.getString("user_password"),
+                        result.getString("user_sexe"),
+                        result.getString("user_image"),
+                        result.getString("user_specialisation"),
+                        result.getString("user_status")
+                );
+
+                doctorListData.add(doctorData);
+            }
+
+            center_scanTabIdDo.setCellValueFactory(
+                    new PropertyValueFactory<>("id"));
+
+            center_scanTabNomD.setCellValueFactory(
+                    new PropertyValueFactory<>("nom"));
+
+            center_scanTabMail.setCellValueFactory(
+                    new PropertyValueFactory<>("email"));
+
+            center_scanTabPass.setCellValueFactory(
+                    new PropertyValueFactory<>("password"));
+
+            center_scanTabSpec.setCellValueFactory(
+                    new PropertyValueFactory<>("specialisation"));
+
+            center_scanTabSexe.setCellValueFactory(
+                    new PropertyValueFactory<>("sexe"));
+
+            center_scanTabStat.setCellValueFactory(
+                    new PropertyValueFactory<>("status")
+            );
+
+            center_scanTabView.setItems(doctorListData);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
 
     // Cette partie sert a afficher le nom de l'utilisateur recuperer depuis
     // La base de donnees sur l'interface
@@ -152,9 +223,11 @@ public class adminController implements Initializable {
 
     // La liste des specialisation d'un Dr par Selection
     public void profileSpecialList() {
-        ObservableList<String> listData =
-                FXCollections.observableArrayList(specialisation);
-
+        List<String> listS = new ArrayList<>();
+        for(String date : specialisation){
+            listS.add(date);
+        }
+        ObservableList listData = FXCollections.observableList(listS);
         profil_specialisation.setItems(listData);
     }
 
@@ -516,5 +589,6 @@ public class adminController implements Initializable {
         initSpecialisationListener();
         profileDisplayImage();
         affichageTotalDr();
+        displayDoctors();
     }
 }

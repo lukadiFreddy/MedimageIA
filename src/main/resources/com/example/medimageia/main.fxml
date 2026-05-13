@@ -72,7 +72,7 @@
 
                   <Button fx:id="analyse_btn" alignment="CENTER" layoutX="23.0" layoutY="220.0" onAction="#switchForm" prefWidth="130.0" styleClass="btn-scanA" text="ANALYSE IA" />
 
-                  <Button fx:id="listScan_btn" alignment="CENTER" layoutX="23.0" layoutY="296.0" onAction="#switchForm" prefWidth="130.0" styleClass="btn-scanA" text="LISTE DES SCANS" />
+                  <Button fx:id="listScan_btn" alignment="CENTER" layoutX="23.0" layoutY="296.0" onAction="#switchForm" prefWidth="130.0" styleClass="btn-scanA" text="LISTE DES DR." />
 
                   <Label layoutX="69.0" layoutY="390.0" text="PROFIL" />
 
@@ -107,18 +107,20 @@
                </AnchorPane>
                <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0">
                   <children>
-                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="44.0" prefHeight="22.0" prefWidth="191.0" text="LISTE DES SCANNAGES">
+                     <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="44.0" prefHeight="22.0" prefWidth="191.0" text="LISTE DES DR.">
                         <font>
                            <Font name="Calibri Bold" size="18.0" />
                         </font>
                      </Label>
                      <TableView fx:id="center_scanTabView" layoutX="37.0" layoutY="104.0" prefHeight="474.0" prefWidth="976.0" styleClass="clean-table" AnchorPane.bottomAnchor="27.33333333333337" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="104.0">
                         <columns>
-                           <TableColumn fx:id="center_scanTabId" prefWidth="90.0" text="IDENTIFIANT" />
-                           <TableColumn fx:id="center_scanTabNom" prefWidth="246.0" text="NOMS" />
-                           <TableColumn fx:id="center_scanTabImage" minWidth="0.0" prefWidth="212.0" text="IMAGES" />
-                           <TableColumn fx:id="center_scanTabDiagnostic" minWidth="0.0" prefWidth="212.0" text="DIAGNOSTICS" />
-                           <TableColumn fx:id="center_scanTabAction" maxWidth="416.66668701171875" minWidth="-1.0" prefWidth="212.0" text="ACTIONS" />
+                           <TableColumn fx:id="center_scanTabIdDo" prefWidth="49.333343505859375" text="ID" />
+                           <TableColumn fx:id="center_scanTabNomD" prefWidth="139.99996948242188" text="NOMS" />
+                           <TableColumn fx:id="center_scanTabMail" minWidth="0.0" prefWidth="186.33340454101562" text="ADRESSE MAIL" />
+                           <TableColumn fx:id="center_scanTabPass" minWidth="0.0" prefWidth="190.0" text="MOT DE PASSE" />
+                           <TableColumn fx:id="center_scanTabSpec" maxWidth="416.66668701171875" minWidth="-1.0" prefWidth="159.0" text="SPECIALISATION" />
+                           <TableColumn fx:id="center_scanTabSexe" minWidth="0.0" prefWidth="70.666748046875" text="SEXE" />
+                           <TableColumn fx:id="center_scanTabStat" minWidth="0.0" prefWidth="173.33343505859375" text="STATUS" />
                         </columns>
                      </TableView>
                      <Label layoutX="788.0" layoutY="14.0" text="NOMBRE DES DOCTEURS">
