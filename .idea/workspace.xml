@@ -5,8 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3ecc37d-2c16-459e-9d09-3e76b0091c32" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/medimageia/DoctorData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/1778576926195_OIP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/1778577498654_1778576926195_OIP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/1778604335511_1778576926195_OIP.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/1778658516647_moi.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/19.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/20.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile_images/9.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/medimageia/adminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/medimageia/adminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/medimageia/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/medimageia/main.fxml" afterDir="false" />
     </list>
@@ -77,6 +100,9 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\pc\IdeaProjects\MedimageIA\dataset" />
+      <recent name="C:\Users\pc\IdeaProjects\MedimageIA" />
+      <recent name="C:\Users\pc\IdeaProjects\MedimageIA\.mvn" />
       <recent name="C:\Users\pc\IdeaProjects\MedimageIA\src\main\resources\com\example\medimageia" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">

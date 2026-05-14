@@ -86,18 +86,18 @@
             <AnchorPane BorderPane.alignment="CENTER">
 
                <!-- 🔥 TON CONTENU EXISTANT -->
-               <AnchorPane fx:id="centre_ia" layoutY="1.0" prefHeight="603.0" prefWidth="1035.0" visible="false">
+               <AnchorPane fx:id="centre_ia" layoutY="1.0" prefHeight="603.0" prefWidth="1035.0">
 
                   <children>
 
-                     <Label layoutX="156.0" layoutY="116.0" text="L'IMAGE APPARAIT ICI" />
+                     <Label layoutX="154.0" layoutY="58.0" text="L'IMAGE APPARAIT ICI" />
 
-                     <Label layoutX="645.0" layoutY="41.0" text="LA REPONSE DE L'IA" />
+                     <Label layoutX="645.0" layoutY="58.0" text="LA REPONSE DE L'IA" />
 
-                     <AnchorPane fx:id="centre_iaImage" layoutX="72.0" layoutY="150.0" prefHeight="186.0" prefWidth="287.0" styleClass="border-top" />
+                     <AnchorPane fx:id="centre_iaImage" layoutX="123.0" layoutY="105.0" prefHeight="186.0" prefWidth="181.0" styleClass="border-top" />
 
-                     <AnchorPane fx:id="centre_iaReponse" layoutX="525.0" layoutY="78.0" prefHeight="341.0" prefWidth="347.0" styleClass="border-top" />
-                     <Button fx:id="centre_iaBtn" layoutX="438.0" layoutY="521.0" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
+                     <AnchorPane fx:id="centre_iaReponse" layoutX="553.0" layoutY="98.0" prefHeight="287.0" prefWidth="292.0" styleClass="border-top" />
+                     <Button fx:id="centre_iaBtn" layoutX="438.0" layoutY="521.0" onAction="#uploadScanImage" prefHeight="40.0" prefWidth="160.0" styleClass="btn-scan" text="UPLOAD UNE IMAGE">
                         <font>
                            <Font name="Calibri Bold" size="14.0" />
                         </font>
@@ -105,7 +105,7 @@
                   </children>
 
                </AnchorPane>
-               <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0">
+               <AnchorPane fx:id="center_scan" prefHeight="605.0" prefWidth="1036.0" visible="false">
                   <children>
                      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="422.0" layoutY="44.0" prefHeight="22.0" prefWidth="191.0" text="LISTE DES DR.">
                         <font>

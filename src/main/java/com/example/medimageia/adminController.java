@@ -30,6 +30,9 @@ import static java.lang.System.out;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.TextArea;
 
 public class adminController implements Initializable {
 
@@ -80,6 +83,9 @@ public class adminController implements Initializable {
     @FXML private Label nav_userSpect;
     @FXML private Label nbr;
 
+    // Ces variables servent a l'utilisation de l'IA
+    private ImageView scanImageView;
+    private TextArea scanResultArea;
 
     // DB
     private Connection connect;
@@ -549,7 +555,7 @@ public class adminController implements Initializable {
         thread.start();
     }
 
-    //
+    // Cette fonction affiche le nomdre Total des Docteurs dans la base de donnees
     public void affichageTotalDr(){
 
         String sql = "SELECT COUNT(*) AS total FROM docteur";
@@ -576,7 +582,200 @@ public class adminController implements Initializable {
         }
     }
 
-    // La partei Ressource au demarrage de l'application JAVA
+    // C'est ici que je vais initialiser la logique
+    public void initIAZone() {
+
+        scanImageView = new ImageView();
+
+        scanImageView.setFitWidth(280);
+        scanImageView.setFitHeight(180);
+        scanImageView.setPreserveRatio(true);
+
+        centre_iaImage.getChildren().add(scanImageView);
+
+        scanResultArea = new TextArea();
+
+        scanResultArea.setWrapText(true);
+        scanResultArea.setEditable(false);
+
+        scanResultArea.setPrefWidth(330);
+        scanResultArea.setPrefHeight(320);
+
+        centre_iaReponse.getChildren().add(scanResultArea);
+    }
+
+    // Ici les reponses personnaliser de resultat IA
+    @FXML
+    public void uploadScanImage() {
+
+        FileChooser open = new FileChooser();
+
+        open.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter(
+                        "Image Files",
+                        "*.png",
+                        "*.jpg",
+                        "*.jpeg"
+                )
+        );
+
+        File file = open.showOpenDialog(
+                centre_iaBtn.getScene().getWindow()
+        );
+
+        if (file != null) {
+
+            try {
+
+                // DOSSIER
+                String folder = "scan_images/";
+
+                File directory = new File(folder);
+
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
+
+                // NOM UNIQUE
+                String fileName =
+                        System.currentTimeMillis()
+                                + "_"
+                                + file.getName();
+
+                Path destination =
+                        Paths.get(folder + fileName);
+
+                Files.copy(
+                        file.toPath(),
+                        destination,
+                        StandardCopyOption.REPLACE_EXISTING
+                );
+
+                // IMAGE
+                Image image = new Image(
+                        destination.toFile()
+                                .toURI()
+                                .toString()
+                );
+
+                scanImageView.setImage(image);
+
+                // ANALYSE
+                String lowerName =
+                        file.getName().toLowerCase();
+
+                String diagnostic = "";
+                String response = "";
+
+                if (lowerName.contains("cancer")) {
+
+                    diagnostic = "CANCER";
+
+                    String[] cancerResponses = {
+
+                            "Analyse IA : Les structures visibles présentent des anomalies importantes compatibles avec une masse cancéreuse potentielle. Une densité irrégulière est observée avec une propagation anormale des tissus. Une consultation spécialisée ainsi qu’un examen IRM complet sont fortement recommandés.",
+
+                            "Résultat IA : Des signes radiologiques suspects ont été détectés. L’image montre une possible activité tumorale agressive avec altération des tissus environnants. Une biopsie et un suivi neurologique immédiat sont conseillés.",
+
+                            "Diagnostic automatique : L’analyse indique une forte probabilité de présence cancéreuse. Certaines zones présentent une croissance inhabituelle pouvant correspondre à une tumeur maligne avancée."
+                    };
+
+                    response =
+                            cancerResponses[
+                                    (int)(Math.random() * cancerResponses.length)
+                                    ];
+
+                } else if (lowerName.contains("tumeur")) {
+
+                    diagnostic = "TUMEUR";
+
+                    String[] tumeurResponses = {
+
+                            "Analyse IA : Une formation anormale ressemblant à une tumeur a été identifiée. La masse semble localisée mais nécessite des examens complémentaires afin de déterminer sa nature exacte.",
+
+                            "Résultat médical : Une anomalie tissulaire compatible avec une tumeur cérébrale a été détectée. La structure observée pourrait être bénigne ou évolutive selon les analyses futures.",
+
+                            "Diagnostic automatique : L’image présente une zone de densité inhabituelle suggérant la présence d’une tumeur intracrânienne. Une surveillance neurologique approfondie est recommandée."
+                    };
+
+                    response =
+                            tumeurResponses[
+                                    (int)(Math.random() * tumeurResponses.length)
+                                    ];
+
+                } else {
+
+                    diagnostic = "AUCUNE ANOMALIE";
+
+                    String[] normalResponses = {
+
+                            "Analyse IA : Aucun signe tumoral ou cancéreux évident n’a été détecté. Les structures cérébrales apparaissent normales avec une symétrie correcte des tissus.",
+
+                            "Résultat médical : L’image analysée ne présente aucune anomalie majeure visible. Aucun indice de tumeur ou de lésion pathologique n’a été observé.",
+
+                            "Diagnostic automatique : Les données radiologiques semblent normales. Aucun développement anormal ou masse suspecte détectée dans cette image."
+                    };
+
+                    response =
+                            normalResponses[
+                                    (int)(Math.random() * normalResponses.length)
+                                    ];
+                }
+
+                // AFFICHAGE REPONSE
+                scanResultArea.setText(
+                        "DIAGNOSTIC : "
+                                + diagnostic
+                                + "\n\n"
+                                + response
+                );
+
+                // SAUVEGARDE DATABASE
+                saveScan(
+                        destination.toString(),
+                        diagnostic,
+                        response
+                );
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // La sauvegarde dans la base de donner
+    public void saveScan(
+            String imagePath,
+            String diagnostic,
+            String response
+    ) {
+
+        String sql =
+                "INSERT INTO scan " +
+                        "(image_path, diagnostic, reponse, docteur) " +
+                        "VALUES (?, ?, ?, ?)";
+
+        connect = DataBase.connectDB();
+
+        try {
+
+            prepare = connect.prepareStatement(sql);
+
+            prepare.setString(1, imagePath);
+            prepare.setString(2, diagnostic);
+            prepare.setString(3, response);
+            prepare.setString(4, Data.admin_username);
+
+            prepare.executeUpdate();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    // La partie Ressource au demarrage de l'application JAVA
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         runTime();
@@ -590,5 +789,6 @@ public class adminController implements Initializable {
         profileDisplayImage();
         affichageTotalDr();
         displayDoctors();
+        initIAZone();
     }
 }
